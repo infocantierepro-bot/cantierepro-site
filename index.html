@@ -3,7 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CantierePro — Infrastruttura Operativa per la Filiera Edile</title>
+<title>CantierePro — Gestionale di Cantiere per Imprese Edili e Studi Tecnici</title>
+<meta name="description" content="CantierePro è il gestionale modulare per il settore edile: computo metrico, contabilità lavori, SAL, documenti, personale, mezzi e sicurezza in un'unica piattaforma nata dall'esperienza reale di cantiere.">
+<meta name="keywords" content="gestionale cantiere, software impresa edile, gestione cantieri, computo metrico, contabilità lavori, gestione documenti cantiere, sicurezza cantiere, software direttore tecnico">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cantierepro-site.pages.dev/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b3e'/%3E%3Cpath d='M16 44V26l16-10 16 10v18' fill='none' stroke='%230096ff' stroke-width='4' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M25 44V32h14v12' fill='none' stroke='%23ffffff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CantierePro — Gestionale di Cantiere per Imprese Edili e Studi Tecnici">
+<meta property="og:description" content="Il gestionale nato dall'esperienza reale sul campo. Computo metrico, contabilità, SAL, documenti, personale, mezzi e sicurezza in un'unica piattaforma modulare.">
+<meta property="og:url" content="https://cantierepro-site.pages.dev/">
+<meta property="og:locale" content="it_IT">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CantierePro — Gestionale di Cantiere per Imprese Edili e Studi Tecnici">
+<meta name="twitter:description" content="Il gestionale nato dall'esperienza reale sul campo. Computo metrico, contabilità, SAL, documenti, personale, mezzi e sicurezza in un'unica piattaforma modulare.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CantierePro",
+  "email": "infocantierepro@gmail.com",
+  "url": "https://cantierepro-site.pages.dev/",
+  "description": "Gestionale modulare per il settore edile sviluppato da un geometra con esperienza diretta di cantiere."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CantierePro",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows",
+  "description": "Gestionale desktop modulare per imprese edili e studi tecnici: computo metrico, contabilità lavori, SAL, documentazione tecnica, personale, mezzi, sicurezza e forniture.",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/PreOrder"
+  }
+}
+</script>
+
 <style>
   :root {
     --navy: #0d1b3e;
@@ -18,6 +59,8 @@
     --bg: #f9fafb;
     --bg-alt: #f3f4f7;
     --success: #10b981;
+    --warn: #f59e0b;
+    --danger: #ef4444;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -28,6 +71,9 @@
     color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
+  img { max-width: 100%; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* Navigation */
   nav {
@@ -42,10 +88,11 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
-  .logo { font-weight: 800; font-size: 1rem; letter-spacing: -0.01em; color: var(--navy-dark); }
+  .logo { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--navy-dark); text-decoration: none; }
   .nav-links {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 8px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -55,565 +102,451 @@
     color: var(--muted);
     font-weight: 500;
     font-size: 0.9rem;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
     transition: all 0.2s;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
   }
-  .nav-links a:hover {
-    color: var(--accent);
-    background: var(--accent-light);
-    border-bottom: 2px solid var(--accent);
+  .nav-links a:hover { color: var(--accent); background: var(--accent-light); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: white !important;
+    padding: 9px 18px !important;
+    border-radius: 7px !important;
+    font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: var(--accent-hover) !important; }
+  @media (max-width: 700px) {
+    .nav-links .nav-text-link { display: none; }
   }
 
   /* Hero */
   .hero {
-    max-width: 900px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 140px 40px 80px;
-    text-align: center;
+    padding: 90px 40px 60px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 24px 40px; text-align: center; }
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent-hover);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
   }
   .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    font-size: clamp(2.1rem, 4.2vw, 3rem);
     font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-    margin: 0 0 24px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0 0 20px;
     color: var(--navy-dark);
   }
-  .hero p {
-    font-size: 1.05rem;
+  .hero p.lead {
+    font-size: 1.08rem;
     color: var(--muted);
     line-height: 1.7;
-    margin: 0 auto 40px;
-    max-width: 700px;
+    margin: 0 0 32px;
   }
-  .cta-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    margin-bottom: 0;
-  }
+  .cta-group { display: flex; flex-wrap: wrap; gap: 14px; }
+  @media (max-width: 960px) { .cta-group { justify-content: center; } }
   .cta-primary, .cta-secondary {
     border: none;
-    padding: 14px 36px;
+    padding: 14px 30px;
     font-size: 0.95rem;
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: all 0.2s;
     text-decoration: none;
     display: inline-block;
   }
   .cta-primary {
     background: var(--accent);
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 150, 255, 0.2);
+    box-shadow: 0 4px 14px rgba(0, 150, 255, 0.25);
   }
-  .cta-primary:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 150, 255, 0.3);
-  }
+  .cta-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
   .cta-secondary {
     border: 1.5px solid var(--line);
     background: white;
     color: var(--navy);
   }
-  .cta-secondary:hover {
-    background: var(--accent-light);
-    border-color: var(--accent);
-    color: var(--accent);
+  .cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero mockup */
+  .mockup {
+    background: var(--navy-dark);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 30px 60px rgba(5, 17, 29, 0.35);
   }
+  .mockup-topbar { display: flex; gap: 6px; margin-bottom: 14px; padding: 0 4px; }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+  .mockup-body { background: white; border-radius: 10px; padding: 20px; }
+  .mockup-row { display: flex; gap: 12px; margin-bottom: 12px; }
+  .mockup-sidebar { width: 30%; display: flex; flex-direction: column; gap: 8px; }
+  .mockup-sidebar div { height: 12px; border-radius: 4px; background: var(--bg-alt); }
+  .mockup-sidebar div:first-child { background: var(--accent-light); width: 90%; }
+  .mockup-main { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .mockup-card { background: var(--bg-alt); border-radius: 8px; padding: 12px; }
+  .mockup-bar { height: 8px; border-radius: 4px; background: var(--line); margin-bottom: 6px; }
+  .mockup-bar.short { width: 55%; }
+  .mockup-bar.accent { background: var(--accent); width: 70%; }
+  .mockup-stats { display: flex; gap: 10px; }
+  .mockup-stat { flex: 1; background: var(--bg-alt); border-radius: 8px; padding: 10px; text-align: center; }
+  .mockup-stat .num { font-weight: 800; color: var(--navy-dark); font-size: 1.1rem; }
+  .mockup-stat .lbl { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .mockup-caption { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
 
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
-    margin: 60px 0;
+    margin: 0;
   }
 
-  main { max-width: 1000px; margin: 0 auto; padding: 0 40px 100px; }
-  .section { margin-bottom: 100px; }
-  .section-head {
-    text-align: center;
-    margin-bottom: 60px;
+  main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .section { padding: 90px 0; }
+  @media (max-width: 800px) {
+    main { padding: 0 24px; }
+    .section { padding: 60px 0; }
+  }
+  .section-head { text-align: center; margin-bottom: 52px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    display: block;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--navy-dark);
-    margin: 0 0 16px;
+    margin: 0 0 14px;
   }
-  .section-intro {
-    color: var(--muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .section-intro { color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin: 0; }
 
-  /* Configuratore */
-  .configuratore {
+  /* Problema / Soluzione */
+  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 800px) { .split-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .pain-list, .gain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .pain-list li, .gain-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.98rem; color: var(--text); line-height: 1.5;
+  }
+  .pain-list .ic { color: var(--danger); flex-shrink: 0; margin-top: 2px; }
+  .gain-list .ic { color: var(--success); flex-shrink: 0; margin-top: 2px; }
+  .split-title { font-size: 1.2rem; font-weight: 800; margin: 0 0 20px; color: var(--navy-dark); }
+
+  /* Feature grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
     background: white;
     border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px;
+    transition: all 0.2s;
+  }
+  .feature-card:hover { border-color: var(--accent); box-shadow: 0 10px 28px rgba(0,150,255,0.08); transform: translateY(-2px); }
+  .feature-card .icon-wrap {
+    width: 42px; height: 42px; border-radius: 9px;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px; color: var(--accent);
+  }
+  .feature-card h3 { font-size: 1.02rem; color: var(--navy-dark); margin: 0 0 8px; font-weight: 700; }
+  .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Pacchetti */
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .package-card {
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .package-card.core { border-color: var(--accent); background: var(--accent-light); }
+  .package-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 4px 10px; border-radius: 5px;
+    background: var(--bg-alt); color: var(--muted); margin-bottom: 12px;
+  }
+  .package-card.core .package-badge { background: var(--accent); color: white; }
+  .package-card h3 { font-size: 1.1rem; color: var(--navy-dark); margin: 0 0 8px; font-weight: 800; }
+  .package-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Vantaggio competitivo - flow */
+  .flow-box {
+    background: var(--navy-dark);
     border-radius: 16px;
     padding: 48px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    color: white;
   }
-  .config-step {
-    margin-bottom: 32px;
+  @media (max-width: 800px) { .flow-box { padding: 32px 24px; } }
+  .flow-box h2 { color: white; }
+  .flow-box .section-intro { color: #c5d2f5; }
+  .flow-steps {
+    display: flex; align-items: center; gap: 8px; margin: 40px 0 32px;
+    flex-wrap: wrap; justify-content: center;
   }
-  .config-step h3 {
-    font-size: 1.15rem;
-    color: var(--navy-dark);
-    margin: 0 0 16px;
-    font-weight: 700;
-  }
-  .config-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .config-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: var(--bg-alt);
-    border: 1.5px solid var(--line);
+  .flow-step {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 130px;
+    flex: 1;
   }
-  .config-checkbox:hover {
-    border-color: var(--accent);
-    background: var(--accent-light);
+  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #93a4d1; margin-bottom: 6px; }
+  .flow-step .flow-value { font-weight: 800; font-size: 1.3rem; }
+  .flow-step.residuo { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.35); }
+  .flow-step.residuo .flow-value { color: #fca5a5; }
+  .flow-arrow { color: #5a6a99; font-size: 1.3rem; flex-shrink: 0; }
+  @media (max-width: 700px) {
+    .flow-steps { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
   }
-  .config-checkbox input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: var(--accent);
-  }
-  .config-checkbox label {
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--navy-dark);
-    margin: 0;
-  }
-  .config-result {
-    margin-top: 32px;
-    padding: 20px;
-    background: var(--accent-light);
+  .flow-note {
+    background: rgba(0,150,255,0.12);
+    border: 1px solid rgba(0,150,255,0.3);
     border-radius: 10px;
-    text-align: center;
-    display: none;
-  }
-  .config-result.active { display: block; }
-  .config-result p { margin: 0 0 12px; color: var(--muted); }
-  .config-result .cta-primary {
-    margin-top: 16px;
-  }
-
-  /* Infrastruttura Core */
-  .infra-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 900px) {
-    .infra-grid { grid-template-columns: 1fr; }
-  }
-  .infra-card {
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 32px;
-    transition: all 0.2s;
-  }
-  .infra-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 12px 32px rgba(0, 150, 255, 0.1);
-  }
-  .infra-badge {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .infra-card h3 {
-    font-size: 1.35rem;
-    color: var(--navy-dark);
-    margin: 0 0 12px;
-    font-weight: 800;
-  }
-  .infra-card p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0 0 16px;
-  }
-  .infra-features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .infra-features li {
-    font-size: 0.9rem;
-    color: var(--text);
-    padding: 6px 0;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 6px;
-  }
-  .infra-features li:last-child {
-    border-bottom: none;
-  }
-
-  /* Nodi di Rete */
-  .nodi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 900px) {
-    .nodi-grid { grid-template-columns: 1fr; }
-  }
-  .nodo-card {
-    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(0,150,255,0.05) 100%);
-    border: 1.5px solid var(--accent-light);
-    border-radius: 12px;
-    padding: 32px;
-    text-align: center;
-  }
-  .nodo-icon {
-    font-size: 2.4rem;
-    margin-bottom: 12px;
-  }
-  .nodo-card h4 {
-    font-size: 1.15rem;
-    color: var(--navy-dark);
-    margin: 0 0 12px;
-    font-weight: 700;
-  }
-  .nodo-card p {
-    color: var(--muted);
+    padding: 18px 22px;
     font-size: 0.92rem;
     line-height: 1.6;
-    margin: 0;
+    color: #dce8ff;
   }
 
-  /* Anti-Commodity */
-  .anti-commodity {
-    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
-    color: white;
-    padding: 48px 40px;
-    border-radius: 12px;
+  /* Sicurezza */
+  .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .trust-card { display: flex; gap: 14px; align-items: flex-start; }
+  .trust-card .icon-wrap {
+    width: 38px; height: 38px; border-radius: 8px; background: var(--accent-light);
+    color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .anti-commodity h2 { color: white; margin-bottom: 32px; }
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  @media (max-width: 700px) {
-    .comparison-grid { grid-template-columns: 1fr; }
-  }
-  .comparison-col h3 {
-    font-size: 1.2rem;
-    margin: 0 0 16px;
-    font-weight: 700;
-  }
-  .comparison-col p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #c5d2f5;
-    margin: 0;
-  }
-  .comparison-col.highlight {
-    border-left: 3px solid var(--accent);
-    padding-left: 24px;
-  }
-  .comparison-col.highlight p {
-    color: white;
+  .trust-card h4 { margin: 0 0 4px; font-size: 0.95rem; color: var(--navy-dark); font-weight: 700; }
+  .trust-card p { margin: 0; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  .trust-disclaimer {
+    margin-top: 28px; padding: 16px 20px; background: var(--bg-alt); border-radius: 10px;
+    font-size: 0.82rem; color: var(--muted); line-height: 1.6;
   }
 
-  /* Scarcity */
-  .scarcity {
-    background: white;
-    border: 2px solid var(--accent-light);
-    border-radius: 12px;
-    padding: 40px;
-    text-align: center;
+  /* Per chi */
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .audience-card {
+    background: white; border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px; text-align: center;
   }
-  .scarcity h3 {
-    font-size: 1.3rem;
-    color: var(--accent);
-    margin: 0 0 12px;
-    font-weight: 700;
+  .audience-card .icon-wrap {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
   }
-  .scarcity p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin: 0;
+  .audience-card h4 { margin: 0; font-size: 0.92rem; color: var(--navy-dark); font-weight: 700; }
+
+  /* Storia */
+  .story-box {
+    background: white; border: 1px solid var(--line); border-radius: 16px;
+    padding: 48px; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
   }
-  .scarcity-badge {
-    display: inline-block;
-    background: var(--accent);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-top: 16px;
+  @media (max-width: 700px) { .story-box { grid-template-columns: 1fr; padding: 32px 24px; text-align: center; } }
+  .story-avatar {
+    width: 88px; height: 88px; border-radius: 50%; background: var(--navy-dark);
+    display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.6rem;
+    flex-shrink: 0; margin: 0 auto;
   }
+  .story-box p { font-size: 1.02rem; line-height: 1.75; color: var(--text); margin: 0 0 12px; }
+  .story-box p:last-child { margin-bottom: 0; }
+  .story-signature { font-weight: 700; color: var(--navy-dark); margin-top: 16px !important; }
+  .story-signature span { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
 
   /* CTA Section */
   .cta-section {
     text-align: center;
-    padding: 60px 40px;
-    background: var(--accent-light);
-    border-radius: 12px;
+    padding: 64px 40px;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    border-radius: 16px;
+    color: white;
   }
-  .cta-section h2 { color: var(--navy-dark); margin-bottom: 12px; }
-  .cta-section p { color: var(--muted); font-size: 1.05rem; margin: 0 0 32px; }
+  @media (max-width: 700px) { .cta-section { padding: 48px 24px; } }
+  .cta-section h2 { color: white; margin-bottom: 12px; }
+  .cta-section p { color: #c5d2f5; font-size: 1.05rem; margin: 0 0 32px; }
 
   footer {
-    text-align: center;
-    padding: 40px 24px;
-    color: var(--muted);
-    font-size: 0.85rem;
     border-top: 1px solid var(--line);
+    padding: 48px 40px 32px;
+    margin-top: 40px;
   }
-  footer a { color: var(--muted); text-decoration: none; }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;
+  }
+  .footer-brand { max-width: 340px; }
+  .footer-brand .logo { display: block; margin-bottom: 10px; }
+  .footer-brand p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin: 0; }
+  .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+  .footer-col h5 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy-dark); margin: 0 0 12px; }
+  .footer-col a { display: block; color: var(--muted); text-decoration: none; font-size: 0.88rem; margin-bottom: 8px; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1100px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 0.78rem; color: var(--muted); line-height: 1.6;
+  }
 
   /* Modal */
   .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(3px);
-    animation: fadeIn 0.25s ease;
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(3px); animation: fadeIn 0.25s ease;
   }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .modal.active { display: flex; align-items: center; justify-content: center; }
+  .modal.active { display: flex; align-items: center; justify-content: center; padding: 20px; }
   .modal-content {
-    background: white;
-    border-radius: 12px;
-    padding: 48px;
-    max-width: 580px;
-    width: 90%;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-    animation: slideUp 0.3s ease;
+    background: white; border-radius: 12px; padding: 44px; max-width: 580px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35); animation: slideUp 0.3s ease;
   }
   @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   .modal-close {
-    float: right;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--muted);
-    cursor: pointer;
-    border: none;
-    background: none;
-    transition: color 0.15s;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    float: right; font-size: 1.6rem; font-weight: bold; color: var(--muted); cursor: pointer;
+    border: none; background: none; padding: 0; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
   }
   .modal-close:hover { color: var(--text); }
   .modal h3 { margin: 0 0 8px; font-size: 1.4rem; color: var(--navy-dark); font-weight: 800; }
   .modal-intro { color: var(--muted); margin: 0 0 28px; font-size: 0.95rem; line-height: 1.6; }
-  .form-group {
-    margin-bottom: 20px;
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-weight: 700; margin-bottom: 6px; color: var(--navy); font-size: 0.86rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
+    font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; background: white;
   }
-  .form-group label {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--navy);
-    font-size: 0.88rem;
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 11px 12px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    transition: border-color 0.2s;
-    background: white;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light);
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light);
   }
   .form-group textarea { resize: vertical; min-height: 80px; }
   .form-submit {
-    width: 100%;
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 13px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 12px;
+    width: 100%; background: var(--accent); color: white; border: none; padding: 13px;
+    border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 8px;
   }
-  .form-submit:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
-  }
+  .form-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-  @media (max-width: 800px) {
-    nav { padding: 14px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    main { padding: 0 24px 80px; }
-    .configuratore { padding: 32px 24px; }
-    .anti-commodity { padding: 48px 24px; }
-    .modal-content { padding: 32px 24px; }
+  /* Embedded contact section on page */
+  .contact-embed {
+    background: white; border: 1px solid var(--line); border-radius: 16px;
+    padding: 44px; max-width: 640px; margin: 40px auto 0;
   }
+  @media (max-width: 700px) { .contact-embed { padding: 28px 22px; } }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">CantierePro</div>
+  <a href="#" class="logo">CantierePro</a>
   <ul class="nav-links">
-    <li><a href="#infra">Infrastruttura</a></li>
-    <li><a href="#nodi">Servizi</a></li>
-    <li><a href="#contact" class="open-modal" style="cursor: pointer;">Accesso Prioritario</a></li>
+    <li><a href="#funzionalita" class="nav-text-link">Funzionalità</a></li>
+    <li><a href="#pacchetti" class="nav-text-link">Pacchetti</a></li>
+    <li><a href="#mobile" class="nav-text-link">App Mobile</a></li>
+    <li><a href="#storia" class="nav-text-link">Chi siamo</a></li>
+    <li><a href="#contatto" class="nav-cta open-modal" style="cursor:pointer;">Richiedi una demo</a></li>
   </ul>
 </nav>
 
 <div class="hero">
-  <h1>CantierePro si adatta ai processi della tua azienda, non il contrario.</h1>
-  <p>Non è un software da installare. È l'infrastruttura operativa della tua azienda, configurata sulle tue reali geometrie di cantiere.</p>
-  <div class="cta-group">
-    <button class="cta-primary" onclick="document.getElementById('configuratore').scrollIntoView({behavior:'smooth'})">Configura il Tuo Ecosistema</button>
-    <button class="cta-secondary open-modal">Accesso Prioritario</button>
+  <div>
+    <span class="eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      Sviluppato da un geometra, per tecnici del settore edile
+    </span>
+    <h1>Il gestionale di cantiere nato dall'esperienza reale sul campo.</h1>
+    <p class="lead">CantierePro centralizza commesse, contabilità, documenti, personale, mezzi, sicurezza e avanzamento lavori in un'unica piattaforma modulare sviluppata per imprese e professionisti del settore edile.</p>
+    <div class="cta-group">
+      <button class="cta-primary open-modal">Richiedi una demo</button>
+      <a href="mailto:infocantierepro@gmail.com" class="cta-secondary">Contattami</a>
+    </div>
+  </div>
+  <div class="mockup" role="img" aria-label="Interfaccia semplificata del gestionale CantierePro">
+    <div class="mockup-topbar">
+      <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-row">
+        <div class="mockup-sidebar">
+          <div style="height:16px;"></div><div></div><div></div><div></div><div></div>
+        </div>
+        <div class="mockup-main">
+          <div class="mockup-stats">
+            <div class="mockup-stat"><div class="num">128</div><div class="lbl">Voci Computo</div></div>
+            <div class="mockup-stat"><div class="num">SAL 4</div><div class="lbl">Avanzamento</div></div>
+            <div class="mockup-stat"><div class="num">92%</div><div class="lbl">Completato</div></div>
+          </div>
+          <div class="mockup-card">
+            <div class="mockup-bar accent"></div>
+            <div class="mockup-bar short"></div>
+          </div>
+          <div class="mockup-card">
+            <div class="mockup-bar" style="width:80%"></div>
+            <div class="mockup-bar short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mockup-caption">Anteprima semplificata dell'interfaccia — dashboard commessa</p>
   </div>
 </div>
 
+<div class="divider"></div>
+
 <main>
 
-  <div class="divider"></div>
-
-  <section class="section" id="configuratore">
+  <!-- PROBLEMA / SOLUZIONE -->
+  <section class="section">
     <div class="section-head">
-      <h2>Costruisci la Tua Infrastruttura</h2>
-      <p class="section-intro">Seleziona i moduli di partenza. Tutto il resto lo adattiamo noi sulle tue esigenze reali.</p>
+      <span class="kicker">Il punto di partenza</span>
+      <h2>Gestire un cantiere non dovrebbe voler dire rincorrere le informazioni.</h2>
+      <p class="section-intro">Chi lavora ogni giorno tra ufficio e cantiere conosce bene questi problemi.</p>
     </div>
-    <div class="configuratore">
-      <div class="config-step">
-        <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 8px; color: var(--accent); vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" stroke-width="1.5"/></svg> Moduli Software</h3>
-        <div class="config-options">
-          <label class="config-checkbox">
-            <input type="checkbox" class="module-check" value="base" checked disabled>
-            <label>Base (Incluso)</label>
-          </label>
-          <label class="config-checkbox">
-            <input type="checkbox" class="module-check" value="contabilita">
-            <label>Contabilità</label>
-          </label>
-          <label class="config-checkbox">
-            <input type="checkbox" class="module-check" value="cad">
-            <label>CAD</label>
-          </label>
-        </div>
-      </div>
-      <div class="config-step">
-        <h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 8px; color: var(--accent); vertical-align: middle;"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" stroke-width="1.5"/><line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" stroke-width="1.5"/></svg> Servizi Premium</h3>
-        <div class="config-options">
-          <label class="config-checkbox">
-            <input type="checkbox" class="extension-check" value="assistenza">
-            <label>Assistenza Dedicata</label>
-          </label>
-          <label class="config-checkbox">
-            <input type="checkbox" class="extension-check" value="aggiornamenti">
-            <label>Aggiornamenti Prioritari</label>
-          </label>
-          <label class="config-checkbox">
-            <input type="checkbox" class="extension-check" value="rete">
-            <label>Modalità in Rete</label>
-          </label>
-          <label class="config-checkbox">
-            <input type="checkbox" class="extension-check" value="custom">
-            <label>Personalizzazioni Esclusive</label>
-          </label>
-        </div>
-      </div>
-      <div class="config-result" id="configResult">
-        <p id="configText"></p>
-        <button class="cta-primary open-modal">Ricevi Analisi di Fattibilità</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section" id="infra">
-    <div class="section-head">
-      <h2>L'Infrastruttura Core</h2>
-      <p class="section-intro">Tre fondamenta solide. Scegli da dove partire, espandi quando serve.</p>
-    </div>
-    <div class="infra-grid">
-      <div class="infra-card">
-        <span class="infra-badge">Sempre Incluso</span>
-        <h3>Base Operativa</h3>
-        <p>Il cuore pulsante della tua azienda. Diario lavori, presenze, computo metrico, maestranze e archivio centralizzato.</p>
-        <ul class="infra-features">
-          <li>✓ Computo metrico completo</li>
-          <li>✓ Diario lavori e presenze</li>
-          <li>✓ Gestione maestranze</li>
-          <li>✓ Archivio centralizzato</li>
+    <div class="split-grid">
+      <div>
+        <h3 class="split-title">Come si lavora oggi, troppo spesso</h3>
+        <ul class="pain-list">
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>File sparsi tra PC, email e cartelle diverse per ogni cantiere</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Aggiornamenti passati per WhatsApp e telefonate, senza traccia</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Documenti tecnici difficili da ritrovare quando servono davvero</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Scadenze e verifiche dimenticate finché non diventano un problema</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Aggiornamenti non condivisi tra chi è in cantiere e chi è in ufficio</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Nessuna visione d'insieme reale sullo stato della commessa</li>
         </ul>
       </div>
-      <div class="infra-card">
-        <span class="infra-badge">Modulo Aggiuntivo</span>
-        <h3>Contabilità Avanzata</h3>
-        <p>La visibilità economica del cantiere. SAL, certificati, libretto delle misure, registro e analisi di redditività.</p>
-        <ul class="infra-features">
-          <li>✓ SAL e certificati</li>
-          <li>✓ Libretto e registro</li>
-          <li>✓ Quadri economici</li>
-          <li>✓ Analisi redditività</li>
-        </ul>
-      </div>
-      <div class="infra-card">
-        <span class="infra-badge">Modulo Aggiuntivo</span>
-        <h3>Integrazione CAD</h3>
-        <p>Il disegno incontra la gestione. Gestione intelligente di progetti, disegni e correlazione con il computo metrico.</p>
-        <ul class="infra-features">
-          <li>✓ Gestione disegni tecnici</li>
-          <li>✓ Annotazioni e layer</li>
-          <li>✓ Correlazione computo</li>
-          <li>✓ Varianti progettuali</li>
+      <div>
+        <h3 class="split-title">Come lavora chi usa CantierePro</h3>
+        <ul class="gain-list">
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ogni cantiere ha un'unica fonte di verità, sempre aggiornata</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Gli aggiornamenti si sincronizzano automaticamente tra ufficio e cantiere</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ogni attività viene tracciata: chi, cosa, quando</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Documenti e scadenze organizzati e sempre a portata di mano</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Una visione completa della commessa, sempre disponibile</li>
+          <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meno tempo a cercare informazioni, più tempo a gestire il lavoro</li>
         </ul>
       </div>
     </div>
@@ -621,83 +554,366 @@
 
   <div class="divider"></div>
 
-  <section class="section" id="nodi">
+  <!-- FUNZIONALITA -->
+  <section class="section" id="funzionalita">
     <div class="section-head">
-      <h2>Nodi della Rete</h2>
-      <p class="section-intro">I servizi che trasformano il software in infrastruttura aziendale vera.</p>
+      <span class="kicker">Cosa contiene</span>
+      <h2>Un modulo per ogni area della tua attività</h2>
+      <p class="section-intro">Tutto quello che serve per gestire una commessa dall'apertura alla chiusura, in un'unica piattaforma.</p>
     </div>
-    <div class="nodi-grid">
-      <div class="nodo-card">
-        <div class="nodo-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="9" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M6 18C6 15.2386 8.68629 13 12 13C15.3137 13 18 15.2386 18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h4>Affiancamento Dedicato</h4>
-        <p>Personale qualificato assegnato permanentemente alla tua azienda. Conosce i tuoi flussi, ottimizza la piattaforma per te.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 21V8l9-5 9 5v13" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-7h6v7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Progetti e Cantieri</h3>
+        <p>Anagrafica commesse, dati generali e quadro d'insieme di ogni cantiere attivo.</p>
       </div>
-      <div class="nodo-card">
-        <div class="nodo-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V15M3 12C3 7.58172 7.02944 4 12 4C16.9706 4 21 7.58172 21 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="19" r="2" fill="currentColor"/></svg></div>
-        <h4>Evoluzione Tecnologica Continua</h4>
-        <p>La tua azienda si evolve, la piattaforma la segue. Aggiornamenti non-normativi, nuove integrazioni, adattamenti alle tue esigenze.</p>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="16" x2="12" y2="16" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Computo Metrico</h3>
+        <p>Voci a corpo e a misura, capitoli e sottocapitoli, conforme al D.Lgs. 36/2023 sui contratti pubblici.</p>
       </div>
-      <div class="nodo-card">
-        <div class="nodo-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="8" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="8" width="8" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="17" r="2" fill="currentColor"/><circle cx="17" cy="20" r="2" fill="currentColor"/></svg></div>
-        <h4>Dispositivi Satellite</h4>
-        <p>Estendi la tua infrastruttura dove serve. Il numero di dispositivi si adatta alle tue esigenze reali. I dati rimangono tuoi, i server a tuo nome.</p>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Contabilità Lavori</h3>
+        <p>Registro contabile, libretto delle misure e quadri economici sempre coerenti.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6h7v7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>SAL e Avanzamento</h3>
+        <p>Stati di avanzamento lavori generati con tracciabilità completa delle progressioni.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 3v5a1 1 0 001 1h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Diario dei Lavori</h3>
+        <p>Giornale di cantiere con foto e meteo, firmato digitalmente e immutabile una volta chiuso.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3l7 18 2.5-7.5L20 11 3 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>CAD / DXF</h3>
+        <p>Disegno e misurazione diretta su rilievo, con riporto automatico sul computo metrico.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M2 21v-2a5 5 0 015-5h4a5 5 0 015 5v2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="8" r="3" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Personale e Maestranze</h3>
+        <p>Anagrafiche, presenze e organizzazione delle risorse umane in cantiere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="1" y="10" width="15" height="7" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M16 12h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="6" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Mezzi e Attrezzature</h3>
+        <p>Tracciamento di mezzi, attrezzature e relative assegnazioni ai cantieri.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Risorse e Conformità</h3>
+        <p>Documenti aziendali (DURC, visite mediche e simili) e scadenze centralizzate, sempre sotto controllo.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>DPI e Sicurezza</h3>
+        <p>Registro DPI, formazione e adempimenti legati alla sicurezza in cantiere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v6H3zM3 15h18v6H3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 9v6" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Forniture e Acquisti</h3>
+        <p>Ordini, consegne e materiali collegati direttamente alle voci di computo.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Reportistica</h3>
+        <p>Report chiari e pronti da condividere con committenti e collaboratori.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z" fill="currentColor"/></svg></div>
+        <h3>QR Code e Tesserini</h3>
+        <p>Identificazione rapida di personale e mezzi tramite QR code e tesserini digitali.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/><path d="M17 4a3.5 3.5 0 010 7" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Utenti, Profili e Permessi</h3>
+        <p>Ruoli e livelli di accesso configurabili per ogni collaboratore.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v12M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Backup e Sincronizzazione</h3>
+        <p>Funziona in locale o in rete, con backup e ripristino dei dati integrati.</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- PACCHETTI -->
+  <section class="section" id="pacchetti">
+    <div class="section-head">
+      <span class="kicker">Crescita modulare</span>
+      <h2>Parti dal nucleo base, cresci quando ne hai bisogno</h2>
+      <p class="section-intro">CantierePro nasce con un nucleo operativo essenziale e si espande nel tempo aggiungendo i moduli che servono davvero alla tua organizzazione.</p>
+    </div>
+    <div class="package-grid">
+      <div class="package-card core">
+        <span class="package-badge">Nucleo</span>
+        <h3>Cantieri e Computo Metrico</h3>
+        <p>Anagrafica cantieri e computo metrico completo: il punto di partenza per ogni commessa.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Pacchetto</span>
+        <h3>Contabilità Lavori</h3>
+        <p>SAL, Libretto Misure, Registro di Contabilità, Certificato di Pagamento, Conto Finale, Quadro Economico.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Pacchetto</span>
+        <h3>CAD / DXF</h3>
+        <p>Disegno e misurazione diretta su rilievo, con riporto automatico sul computo.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Pacchetto</span>
+        <h3>Gestione Risorse e Conformità</h3>
+        <p>Mezzi, attrezzature, documenti aziendali, DPI e scadenze centralizzate.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Pacchetto</span>
+        <h3>Gestione Forniture</h3>
+        <p>Richieste d'offerta, ordini, DDT e giacenze, con controllo previsto/ordinato/consegnato per ogni voce.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Estensione</span>
+        <h3>App Mobile di Cantiere</h3>
+        <p>Compagna del desktop per chi lavora sul campo: consultazione, rilievo, presenze e segnalazioni. Il numero di dispositivi collegabili si concorda in base alle esigenze della tua azienda.</p>
+      </div>
+    </div>
+    <p class="section-intro" style="margin-top:32px; text-align:center;">Ogni pacchetto si attiva in modo indipendente: parti da quello che ti serve davvero, aggiungi il resto quando cresci. Scriviamo insieme la configurazione più adatta alla tua azienda.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VANTAGGIO COMPETITIVO -->
   <section class="section">
-    <div class="anti-commodity">
-      <h2>Software di Massa vs Infrastruttura Sartoriale</h2>
-      <div class="comparison-grid">
-        <div class="comparison-col">
-          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 8px; color: #ff6b6b; vertical-align: middle;"><line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Il Modello Tradizionale</h3>
-          <p>Scatola chiusa. Rigida. Lo studio con 1 geometra usa lo stesso software dell'impresa con 50 dipendenti. Se hai un'esigenza unica, devi adattarti tu al software.</p>
-        </div>
-        <div class="comparison-col highlight">
-          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 8px; color: var(--success); vertical-align: middle;"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> L'Approccio CantierePro</h3>
-          <p>Infrastruttura nativamente aperta. Non ti vendiamo uno scatolone, ti diamo la base solida. Poi scriviamo il codice che serve a far girare l'azienda alle tue condizioni.</p>
-        </div>
+    <div class="flow-box">
+      <span class="kicker" style="color:#7fc4ff;">Il vantaggio CantierePro</span>
+      <h2>Computo metrico e forniture, finalmente collegati</h2>
+      <p class="section-intro">Nella maggior parte dei gestionali, computo e approvvigionamenti vivono separati. In CantierePro sono la stessa cosa vista da due angolazioni.</p>
+
+      <div class="flow-steps">
+        <div class="flow-step"><div class="flow-label">Previsto</div><div class="flow-value">100%</div></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><div class="flow-label">Ordinato</div><div class="flow-value">85%</div></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><div class="flow-label">Consegnato</div><div class="flow-value">70%</div></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step residuo"><div class="flow-label">Residuo</div><div class="flow-value">30%</div></div>
+      </div>
+
+      <div class="flow-note">Il sistema evidenzia automaticamente le carenze di approvvigionamento direttamente sulle voci di computo, offrendo un controllo raro nei gestionali tradizionali: sai sempre cosa manca, prima che diventi un problema di cantiere.</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- APP MOBILE -->
+  <section class="section" id="mobile">
+    <div class="section-head">
+      <span class="kicker">Anche fuori dall'ufficio</span>
+      <h2>Il cantiere in tasca, collegato al desktop</h2>
+      <p class="section-intro">Chi lavora sul campo consulta il computo, registra l'avanzamento, segnala problemi e traccia le presenze direttamente dallo smartphone, sincronizzato con il gestionale in ufficio.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Computo in consultazione</h3>
+        <p>Voci, quantità e prezzi sempre a portata di mano, con registrazione diretta dell'avanzamento lavori.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0014 0c0-3.5-3-7-7-11z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Rilievo e misurazioni</h3>
+        <p>Cattura libera delle misure in cantiere, con foto collegata, da assegnare poi comodamente in ufficio.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Segnalazioni immediate</h3>
+        <p>Pericoli, non conformità e richieste di materiale, con priorità, foto e notifica immediata per le urgenze.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>Timbrature e presenze</h3>
+        <p>Entrata, uscita e pause registrate con un tocco, con storico sempre disponibile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Checklist di sicurezza</h3>
+        <p>Controlli guidati su ponteggi, gru, scavi e aree di lavoro, personalizzabili per ogni cantiere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Permessi per ruolo</h3>
+        <p>Ogni utente vede solo le sezioni previste dal proprio ruolo e dai moduli attivi in azienda.</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- SICUREZZA E AFFIDABILITA -->
   <section class="section">
-    <div class="scarcity">
-      <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 8px; color: var(--accent); vertical-align: middle;"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="7" x2="12" y2="12" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Rilascio Controllato su Invito</h3>
-      <p>Poiché ogni implementazione di CantierePro prevede una fase di configurazione sartoriale e l'affiancamento di personale qualificato, la richiesta sta già superando la nostra capacità di configurazione settimanale. L'accesso prioritario ti garantisce di saltare la fila e di essere inserito subito nella prossima finestra disponibile.</p>
-      <span class="scarcity-badge">Alta richiesta — posti limitati ogni settimana</span>
+    <div class="section-head">
+      <span class="kicker">Affidabilità</span>
+      <h2>Pensato per essere usato in sicurezza ogni giorno</h2>
+      <p class="section-intro">Un gestionale che entra nella gestione quotidiana della tua azienda deve essere prima di tutto affidabile.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <div><h4>Ruoli e permessi</h4><p>Ogni collaboratore vede e modifica solo ciò che gli compete.</p></div>
+      </div>
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <div><h4>Locale o in rete</h4><p>Funziona sia su singolo PC che condiviso tra più postazioni.</p></div>
+      </div>
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div><h4>Backup e ripristino</h4><p>I dati della tua azienda restano al sicuro e recuperabili.</p></div>
+      </div>
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <div><h4>Tracciabilità</h4><p>Ogni operazione registrata: chi ha fatto cosa e quando.</p></div>
+      </div>
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div><h4>Un server privato per ogni cliente</h4><p>I dati non vengono mai condivisi tra aziende diverse: restano sempre e solo tuoi.</p></div>
+      </div>
+      <div class="trust-card">
+        <div class="icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div><h4>Licenza protetta</h4><p>Ogni licenza è associata al dispositivo di utilizzo, per una gestione sicura degli accessi.</p></div>
+      </div>
+    </div>
+    <p class="trust-disclaimer">CantierePro è uno strumento a supporto dell'organizzazione tecnica e operativa. Le verifiche formali e gli adempimenti previsti dalla normativa restano in capo ai soggetti obbligati dalla legge — il software non sostituisce responsabilità professionali o certificazioni.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PER CHI -->
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Per chi è pensato</span>
+      <h2>Uno strumento per chi vive il cantiere ogni giorno</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21V8l9-5 9 5v13" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Imprese edili</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Direttori tecnici</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Studi tecnici</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>CSP / CSE</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><h4>Direzione lavori</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Progettisti</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="1" y="10" width="15" height="7" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M16 12h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Aziende con più cantieri</h4></div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section class="section">
+  <!-- STORIA -->
+  <section class="section" id="storia">
+    <div class="section-head">
+      <span class="kicker">La storia del progetto</span>
+      <h2>Nato in cantiere, non in un ufficio marketing</h2>
+    </div>
+    <div class="story-box">
+      <div class="story-avatar">CP</div>
+      <div>
+        <p>CantierePro nasce da anni di esperienza reale, vissuta come progettista, direttore lavori, coordinatore per la sicurezza, direttore tecnico e assistente di cantiere. Ogni funzione del software risponde a un problema affrontato davvero, sul campo, non immaginato a tavolino.</p>
+        <p>Non è un prodotto pensato per vendere una licenza. È lo strumento che avrei voluto avere durante ogni cantiere seguito: qualcosa che tenesse insieme computo, contabilità, documenti, personale e sicurezza senza dover rincorrere ogni informazione da fonti diverse.</p>
+        <p class="story-signature">Un geometra, per i tecnici del settore edile.<span>Fondatore di CantierePro</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA FINALE + CONTATTO -->
+  <section class="section" id="contatto">
     <div class="cta-section">
-      <h2>Pronto a Diventare Infrastruttura?</h2>
-      <p>Raccontaci la struttura del tuo studio o della tua impresa. Riceverai un'analisi di fattibilità personalizzata e l'accesso prioritario al prossimo ciclo di implementazione.</p>
-      <button class="cta-primary open-modal">Richiedi Accesso Prioritario</button>
+      <h2>Vuoi vedere CantierePro in azione?</h2>
+      <p>Raccontami come lavori oggi e ti mostrerò come il software può adattarsi alla tua organizzazione.</p>
+      <button class="cta-primary open-modal">Richiedi una demo</button>
+    </div>
+
+    <div class="contact-embed">
+      <h3 style="margin:0 0 8px; font-size:1.3rem; color:var(--navy-dark);">Contattami direttamente</h3>
+      <p style="color:var(--muted); font-size:0.92rem; margin:0 0 24px;">Compila il modulo: ti risponderò personalmente per organizzare una demo su misura per la tua azienda.</p>
+      <form id="embeddedForm" action="https://formspree.io/f/xpqvadze" method="POST">
+        <div class="form-group">
+          <label for="e-nome">Nome e Cognome *</label>
+          <input type="text" id="e-nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="e-email">Email Aziendale *</label>
+          <input type="email" id="e-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="e-telefono">Telefono *</label>
+          <input type="tel" id="e-telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+          <label for="e-ruolo">Ruolo Professionale *</label>
+          <select id="e-ruolo" name="ruolo" required>
+            <option value="">Seleziona...</option>
+            <option value="Progettista / Studio Tecnico">Progettista / Studio Tecnico</option>
+            <option value="Direttore dei Lavori">Direttore dei Lavori</option>
+            <option value="Impresa Edile">Impresa Edile</option>
+            <option value="General Contractor">General Contractor</option>
+            <option value="CSP / CSE">CSP / CSE</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="e-messaggio">Raccontami come lavori oggi</label>
+          <textarea id="e-messaggio" name="messaggio" placeholder="Quanti cantieri gestisci, come organizzi oggi computo e contabilità, cosa ti manca di più..."></textarea>
+        </div>
+        <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+          <input type="checkbox" id="e-privacy" name="consenso_privacy" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0;">
+          <label for="e-privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Ho letto la <a href="privacy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
+        </div>
+        <button type="submit" class="form-submit">Richiedi la Demo</button>
+      </form>
     </div>
   </section>
 
 </main>
 
 <footer>
-  CantierePro — Infrastruttura Operativa per la Filiera Edile<br>
-  <a href="mailto:infocantierepro@gmail.com">infocantierepro@gmail.com</a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">CantierePro</span>
+      <p>Gestionale modulare per il settore edile, sviluppato da un geometra a partire dall'esperienza reale di cantiere.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Sito</h5>
+        <a href="#funzionalita">Funzionalità</a>
+        <a href="#pacchetti">Pacchetti</a>
+        <a href="#storia">Chi siamo</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legale</h5>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="termini.html">Termini di Utilizzo</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contatti</h5>
+        <a href="mailto:infocantierepro@gmail.com">infocantierepro@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    CantierePro è un software gestionale sviluppato per supportare l'organizzazione tecnica e operativa delle imprese. Le verifiche e gli adempimenti normativi restano in capo ai soggetti obbligati dalla legge.
+  </div>
 </footer>
 
 <!-- Modal Form -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <h3>Accesso Prioritario</h3>
-    <p class="modal-intro">Raccontaci la struttura del tuo studio o della tua impresa. Riceverai un'analisi di fattibilità personalizzata e l'accesso prioritario al prossimo ciclo di implementazione.</p>
+    <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">&times;</button>
+    <h3>Richiedi una demo</h3>
+    <p class="modal-intro">Raccontami come lavori oggi e ti mostrerò come CantierePro può adattarsi alla tua organizzazione.</p>
     <form action="https://formspree.io/f/xpqvadze" method="POST">
-      <input type="hidden" name="Configurazione Selezionata" id="configHiddenField" value="Base (Incluso)">
       <div class="form-group">
         <label for="nome">Nome e Cognome *</label>
         <input type="text" id="nome" name="nome" required>
@@ -718,24 +934,19 @@
           <option value="Direttore dei Lavori">Direttore dei Lavori</option>
           <option value="Impresa Edile">Impresa Edile</option>
           <option value="General Contractor">General Contractor</option>
+          <option value="CSP / CSE">CSP / CSE</option>
           <option value="Altro">Altro</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="postazioni">Configurazione Stimata *</label>
-        <select id="postazioni" name="postazioni" required>
-          <option value="">Seleziona...</option>
-          <option value="Base + Contabilita">Base + Contabilità</option>
-          <option value="Base + CAD">Base + CAD</option>
-          <option value="Full Suite">Full Suite (Tutti i moduli)</option>
-          <option value="Custom">Configurazione personalizzata</option>
-        </select>
+        <label for="messaggio">Raccontami come lavori oggi</label>
+        <textarea id="messaggio" name="messaggio" placeholder="Quanti cantieri gestisci, come organizzi oggi computo e contabilità, cosa ti manca di più..."></textarea>
       </div>
-      <div class="form-group">
-        <label for="messaggio">Raccontaci di te</label>
-        <textarea id="messaggio" name="messaggio" placeholder="La struttura della tua azienda, i tuoi flussi attuali, le tue esigenze..."></textarea>
+      <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+        <input type="checkbox" id="privacy" name="consenso_privacy" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0;">
+        <label for="privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Ho letto la <a href="privacy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
       </div>
-      <button type="submit" class="form-submit">Invia Richiesta di Accesso</button>
+      <button type="submit" class="form-submit">Richiedi la Demo</button>
     </form>
   </div>
 </div>
@@ -743,24 +954,20 @@
 <script>
   const modal = document.getElementById('contactModal');
 
-  // Smooth scroll per link interni
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (link.classList.contains('open-modal')) {
         e.preventDefault();
         modal.classList.add('active');
-      } else {
+      } else if (href.length > 1) {
         e.preventDefault();
         const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 
-  // Open modal
   document.querySelectorAll('.open-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -768,46 +975,12 @@
     });
   });
 
-  function closeModal() {
-    modal.classList.remove('active');
-  }
+  function closeModal() { modal.classList.remove('active'); }
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
-
-  // Configuratore logic
-  document.querySelectorAll('.module-check, .extension-check').forEach(checkbox => {
-    checkbox.addEventListener('change', updateConfig);
-  });
-
-  function updateConfig() {
-    const modules = Array.from(document.querySelectorAll('.module-check:checked')).map(c => c.value);
-    const extensions = Array.from(document.querySelectorAll('.extension-check:checked')).map(c => c.value);
-    const result = document.getElementById('configResult');
-    const text = document.getElementById('configText');
-
-    let config = 'Base (Incluso)';
-    if (modules.includes('contabilita')) config += ' + Contabilità';
-    if (modules.includes('cad')) config += ' + CAD';
-    if (extensions.includes('assistenza')) config += ' + Assistenza Dedicata';
-    if (extensions.includes('aggiornamenti')) config += ' + Aggiornamenti Prioritari';
-    if (extensions.includes('rete')) config += ' + Modalità in Rete';
-    if (extensions.includes('custom')) config += ' + Personalizzazioni Esclusive';
-
-    document.getElementById('configHiddenField').value = config;
-
-    if (extensions.length > 0 || modules.length > 1) {
-      text.innerHTML = `<strong>La tua configurazione:</strong> ${config}`;
-      result.classList.add('active');
-    } else {
-      result.classList.remove('active');
-    }
-  }
 </script>
 
 </body>
