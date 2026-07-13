@@ -116,8 +116,14 @@
     font-weight: 700 !important;
   }
   .nav-cta:hover { background: var(--accent-hover) !important; }
+  .nav-cta { white-space: nowrap; }
   @media (max-width: 700px) {
     .nav-links .nav-text-link { display: none; }
+  }
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .logo { font-size: 0.92rem; }
+    .nav-cta { padding: 8px 12px !important; font-size: 0.78rem !important; }
   }
 
   /* Hero */
@@ -274,6 +280,32 @@
   }
   .feature-card h3 { font-size: 1.02rem; color: var(--navy-dark); margin: 0 0 8px; font-weight: 700; }
   .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Explore cards (link to subpages) */
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .explore-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 30px;
+    transition: all 0.2s;
+  }
+  .explore-card:hover { border-color: var(--accent); box-shadow: 0 12px 30px rgba(0,150,255,0.1); transform: translateY(-3px); }
+  .explore-card .icon-wrap {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; color: var(--accent);
+  }
+  .explore-card h3 { font-size: 1.1rem; color: var(--navy-dark); margin: 0 0 8px; font-weight: 800; }
+  .explore-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; margin: 0 0 14px; }
+  .explore-card .explore-link { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
 
   /* Pacchetti */
   .package-grid {
@@ -462,12 +494,12 @@
 <body>
 
 <nav>
-  <a href="#" class="logo">CantierePro</a>
+  <a href="index.html" class="logo">CantierePro</a>
   <ul class="nav-links">
-    <li><a href="#funzionalita" class="nav-text-link">Funzionalità</a></li>
-    <li><a href="#pacchetti" class="nav-text-link">Pacchetti</a></li>
-    <li><a href="#servizi" class="nav-text-link">Servizi</a></li>
-    <li><a href="#mobile" class="nav-text-link">App Mobile</a></li>
+    <li><a href="funzionalita.html" class="nav-text-link">Funzionalità</a></li>
+    <li><a href="pacchetti-servizi.html#pacchetti" class="nav-text-link">Pacchetti</a></li>
+    <li><a href="pacchetti-servizi.html#servizi" class="nav-text-link">Servizi</a></li>
+    <li><a href="app-mobile.html" class="nav-text-link">App Mobile</a></li>
     <li><a href="#storia" class="nav-text-link">Chi siamo</a></li>
     <li><a href="#contatto" class="nav-cta open-modal" style="cursor:pointer;">Richiedi una demo</a></li>
   </ul>
@@ -555,173 +587,33 @@
 
   <div class="divider"></div>
 
-  <!-- FUNZIONALITA -->
-  <section class="section" id="funzionalita">
+  <!-- ESPLORA -->
+  <section class="section">
     <div class="section-head">
-      <span class="kicker">Cosa contiene</span>
-      <h2>Un modulo per ogni area della tua attività</h2>
-      <p class="section-intro">Tutto quello che serve per gestire una commessa dall'apertura alla chiusura, in un'unica piattaforma.</p>
+      <span class="kicker">Scopri di più</span>
+      <h2>Esplora CantierePro nel dettaglio</h2>
+      <p class="section-intro">Tre approfondimenti per capire esattamente cosa può fare per la tua azienda.</p>
     </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 21V8l9-5 9 5v13" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-7h6v7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>Progetti e Cantieri</h3>
-        <p>Anagrafica commesse, dati generali e quadro d'insieme di ogni cantiere attivo.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="16" x2="12" y2="16" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Computo Metrico</h3>
-        <p>Voci a corpo e a misura, capitoli e sottocapitoli, conforme al D.Lgs. 36/2023 sui contratti pubblici.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Contabilità Lavori</h3>
-        <p>Registro contabile, libretto delle misure e quadri economici sempre coerenti.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6h7v7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>SAL e Avanzamento</h3>
-        <p>Stati di avanzamento lavori generati con tracciabilità completa delle progressioni.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 3v5a1 1 0 001 1h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>Diario dei Lavori</h3>
-        <p>Giornale di cantiere con foto e meteo, firmato digitalmente e immutabile una volta chiuso.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3l7 18 2.5-7.5L20 11 3 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>CAD / DXF</h3>
-        <p>Disegno e misurazione diretta su rilievo, con riporto automatico sul computo metrico.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M2 21v-2a5 5 0 015-5h4a5 5 0 015 5v2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="8" r="3" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Personale e Maestranze</h3>
-        <p>Anagrafiche, presenze e organizzazione delle risorse umane in cantiere.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="1" y="10" width="15" height="7" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M16 12h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="6" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Mezzi e Attrezzature</h3>
-        <p>Tracciamento di mezzi, attrezzature e relative assegnazioni ai cantieri.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>Risorse e Conformità</h3>
-        <p>Documenti aziendali (DURC, visite mediche e simili) e scadenze centralizzate, sempre sotto controllo.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>DPI e Sicurezza</h3>
-        <p>Registro DPI, formazione e adempimenti legati alla sicurezza in cantiere.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v6H3zM3 15h18v6H3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7 9v6" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Forniture e Acquisti</h3>
-        <p>Ordini, consegne e materiali collegati direttamente alle voci di computo.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Reportistica</h3>
-        <p>Report chiari e pronti da condividere con committenti e collaboratori.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z" fill="currentColor"/></svg></div>
-        <h3>QR Code e Tesserini</h3>
-        <p>Identificazione rapida di personale e mezzi tramite QR code e tesserini digitali.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/><path d="M17 4a3.5 3.5 0 010 7" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Utenti, Profili e Permessi</h3>
-        <p>Ruoli e livelli di accesso configurabili per ogni collaboratore.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v12M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Backup e Sincronizzazione</h3>
-        <p>Funziona in locale o in rete, con backup e ripristino dei dati integrati.</p>
-      </div>
+    <div class="explore-grid">
+      <a href="funzionalita.html" class="explore-card">
+        <div class="icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/></svg></div>
+        <h3>Funzionalità</h3>
+        <p>Tutti i moduli del software: computo, contabilità, diario, personale, mezzi, sicurezza e altro.</p>
+        <span class="explore-link">Scopri i moduli →</span>
+      </a>
+      <a href="pacchetti-servizi.html" class="explore-card">
+        <div class="icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h3>Pacchetti e Servizi</h3>
+        <p>Come cresce CantierePro nel tempo: moduli aggiuntivi e servizi di supporto attivabili a parte.</p>
+        <span class="explore-link">Vedi i pacchetti →</span>
+      </a>
+      <a href="app-mobile.html" class="explore-card">
+        <div class="icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="2" stroke="currentColor" stroke-width="1.7"/><line x1="10" y1="18" x2="14" y2="18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h3>App Mobile</h3>
+        <p>Il cantiere in tasca: consultazione, rilievo, segnalazioni e presenze direttamente dal telefono.</p>
+        <span class="explore-link">Scopri l'app →</span>
+      </a>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PACCHETTI -->
-  <section class="section" id="pacchetti">
-    <div class="section-head">
-      <span class="kicker">Crescita modulare</span>
-      <h2>Parti dal nucleo base, cresci quando ne hai bisogno</h2>
-      <p class="section-intro">CantierePro nasce con un nucleo operativo essenziale e si espande nel tempo aggiungendo i moduli che servono davvero alla tua organizzazione.</p>
-    </div>
-    <div class="package-grid">
-      <div class="package-card core">
-        <span class="package-badge">Nucleo</span>
-        <h3>Cantieri e Computo Metrico</h3>
-        <p>Anagrafica cantieri e computo metrico completo: il punto di partenza per ogni commessa.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Pacchetto</span>
-        <h3>Contabilità Lavori</h3>
-        <p>SAL, Libretto Misure, Registro di Contabilità, Certificato di Pagamento, Conto Finale, Quadro Economico.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Pacchetto</span>
-        <h3>CAD / DXF</h3>
-        <p>Disegno e misurazione diretta su rilievo, con riporto automatico sul computo.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Pacchetto</span>
-        <h3>Gestione Risorse e Conformità</h3>
-        <p>Mezzi, attrezzature, documenti aziendali, DPI e scadenze centralizzate.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Pacchetto</span>
-        <h3>Gestione Forniture</h3>
-        <p>Richieste d'offerta, ordini, DDT e giacenze, con controllo previsto/ordinato/consegnato per ogni voce.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Estensione</span>
-        <h3>App Mobile di Cantiere</h3>
-        <p>Compagna del desktop per chi lavora sul campo: consultazione, rilievo, presenze e segnalazioni. Il numero di dispositivi collegabili si concorda in base alle esigenze della tua azienda.</p>
-      </div>
-    </div>
-    <p class="section-intro" style="margin-top:32px; text-align:center;">Ogni pacchetto si attiva in modo indipendente: parti da quello che ti serve davvero, aggiungi il resto quando cresci. Scriviamo insieme la configurazione più adatta alla tua azienda.</p>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- SERVIZI AGGIUNTIVI -->
-  <section class="section" id="servizi">
-    <div class="section-head">
-      <span class="kicker">Oltre il software</span>
-      <h2>Servizi Aggiuntivi</h2>
-      <p class="section-intro">CantierePro non finisce con l'installazione. Attorno al software ci sono servizi pensati per farlo funzionare davvero bene nella tua azienda, contati e attivati a parte.</p>
-    </div>
-    <div class="package-grid">
-      <div class="package-card">
-        <span class="package-badge">Servizio</span>
-        <h3>Aggiornamenti</h3>
-        <p>Nuove versioni del software man mano che vengono rilasciate, senza dover reinstallare da zero.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Servizio</span>
-        <h3>Assistenza Dedicata</h3>
-        <p>Un riferimento diretto per domande, problemi o dubbi d'uso, senza passare da ticket generici.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Servizio</span>
-        <h3>Sincronizzazione Multi-PC</h3>
-        <p>Più postazioni collegate allo stesso cantiere, con dati sempre allineati in tempo reale.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Servizio</span>
-        <h3>Video Corsi</h3>
-        <p>Percorsi video per imparare a usare il software, di base o costruiti su misura per il tuo team.</p>
-      </div>
-      <div class="package-card">
-        <span class="package-badge">Servizio</span>
-        <h3>Formazione in Presenza o Remoto</h3>
-        <p>Sessioni dedicate con il tuo team, in azienda o online, per partire con il piede giusto.</p>
-      </div>
-    </div>
-    <p class="section-intro" style="margin-top:32px; text-align:center;">Ogni servizio si attiva in base a cosa serve davvero alla tua azienda. Parliamone insieme.</p>
   </section>
 
   <div class="divider"></div>
@@ -744,49 +636,6 @@
       </div>
 
       <div class="flow-note">Il sistema evidenzia automaticamente le carenze di approvvigionamento direttamente sulle voci di computo, offrendo un controllo raro nei gestionali tradizionali: sai sempre cosa manca, prima che diventi un problema di cantiere.</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- APP MOBILE -->
-  <section class="section" id="mobile">
-    <div class="section-head">
-      <span class="kicker">Anche fuori dall'ufficio</span>
-      <h2>Il cantiere in tasca, collegato al desktop</h2>
-      <p class="section-intro">Chi lavora sul campo consulta il computo, registra l'avanzamento, segnala problemi e traccia le presenze direttamente dallo smartphone, sincronizzato con il gestionale in ufficio.</p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.7"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Computo in consultazione</h3>
-        <p>Voci, quantità e prezzi sempre a portata di mano, con registrazione diretta dell'avanzamento lavori.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 5 9.5 5 13a7 7 0 0014 0c0-3.5-3-7-7-11z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>Rilievo e misurazioni</h3>
-        <p>Cattura libera delle misure in cantiere, con foto collegata, da assegnare poi comodamente in ufficio.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3>Segnalazioni immediate</h3>
-        <p>Pericoli, non conformità e richieste di materiale, con priorità, foto e notifica immediata per le urgenze.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Timbrature e presenze</h3>
-        <p>Entrata, uscita e pause registrate con un tocco, con storico sempre disponibile.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/></svg></div>
-        <h3>Checklist di sicurezza</h3>
-        <p>Controlli guidati su ponteggi, gru, scavi e aree di lavoro, personalizzabili per ogni cantiere.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z" fill="currentColor"/></svg></div>
-        <h3>Scanner QR</h3>
-        <p>Inquadra il QR di un operaio o di un mezzo e apre subito la scheda corrispondente, generata dal desktop.</p>
-      </div>
     </div>
   </section>
 
@@ -927,8 +776,10 @@
     <div class="footer-links">
       <div class="footer-col">
         <h5>Sito</h5>
-        <a href="#funzionalita">Funzionalità</a>
-        <a href="#pacchetti">Pacchetti</a>
+        <a href="index.html">Home</a>
+        <a href="funzionalita.html">Funzionalità</a>
+        <a href="pacchetti-servizi.html">Pacchetti e Servizi</a>
+        <a href="app-mobile.html">App Mobile</a>
         <a href="#storia">Chi siamo</a>
       </div>
       <div class="footer-col">
