@@ -36,7 +36,8 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
-  .logo { font-weight: 800; font-size: 1rem; color: var(--navy-dark); text-decoration: none; }
+  .logo { font-weight: 800; font-size: 1rem; color: var(--navy-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .logo img { height: 26px; width: auto; display: block; }
   nav a.back {
     color: var(--muted);
     text-decoration: none;
@@ -99,7 +100,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo">CantierePro</a>
+  <a href="index.html" class="logo"><img src="logo-icon.png" alt="" width="26" height="26">CantierePro</a>
   <a href="index.html" class="back">← Torna al sito</a>
 </nav>
 
