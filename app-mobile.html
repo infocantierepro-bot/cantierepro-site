@@ -38,7 +38,19 @@
   .nav-links a:hover { color: var(--accent); background: var(--accent-light); }
   .nav-cta { background: var(--accent) !important; color: white !important; padding: 9px 18px !important; border-radius: 7px !important; font-weight: 700 !important; white-space: nowrap; }
   .nav-cta:hover { background: var(--accent-hover) !important; }
-  @media (max-width: 700px) { .nav-links .nav-text-link { display: none; } }
+  .nav-toggle { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--navy-dark); align-items: center; justify-content: center; }
+  @media (max-width: 700px) {
+    .nav-links .nav-text-link { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav-links.mobile-open {
+      display: flex; flex-direction: column; align-items: stretch; gap: 4px;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: white; padding: 10px 16px 18px; margin: 0;
+      border-bottom: 1px solid var(--line); box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+    }
+    .nav-links.mobile-open .nav-text-link { display: block !important; padding: 12px 10px; }
+    .nav-links.mobile-open .nav-cta { margin-top: 6px; text-align: center; }
+  }
   @media (max-width: 480px) {
     nav { padding: 12px 16px; } .logo { font-size: 0.92rem; }
     .nav-cta { padding: 8px 12px !important; font-size: 0.78rem !important; }
@@ -125,6 +137,9 @@
     <li><a href="chi-siamo.html" class="nav-text-link">Chi siamo</a></li>
     <li><a href="demo.html" class="nav-cta">Richiedi una demo</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
 </nav>
 
 <div class="page-header">
@@ -298,6 +313,27 @@
   modal.querySelector('.modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinksMenu = document.querySelector('.nav-links');
+  if (navToggle && navLinksMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinksMenu.classList.toggle('mobile-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinksMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinksMenu.classList.remove('mobile-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!navLinksMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navLinksMenu.classList.remove('mobile-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 </script>
 
 </body>
