@@ -27,7 +27,7 @@
   "name": "CantierePro",
   "email": "infocantierepro@gmail.com",
   "url": "https://cantierepro-site.pages.dev/",
-  "description": "Gestionale modulare per il settore edile sviluppato da un geometra con esperienza diretta di cantiere."
+  "description": "Gestionale modulare per il settore edile sviluppato da un tecnico con esperienza diretta di cantiere."
 }
 </script>
 <script type="application/ld+json">
@@ -489,6 +489,28 @@
     padding: 44px; max-width: 640px; margin: 40px auto 0;
   }
   @media (max-width: 700px) { .contact-embed { padding: 28px 22px; } }
+
+  /* Calcolatore */
+  .calc-box { max-width: 640px; margin: 0 auto; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 40px; }
+  @media (max-width: 700px) { .calc-box { padding: 26px 22px; } }
+  .calc-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; margin-bottom: 20px; }
+  .calc-field { flex: 1; min-width: 180px; }
+  .calc-field label { display: block; font-weight: 700; font-size: 0.86rem; color: var(--navy); margin-bottom: 6px; }
+  .calc-field input, .calc-field select { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.95rem; font-family: inherit; background: white; }
+  .calc-button { background: var(--accent); color: white; border: none; padding: 12px 22px; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .calc-button:hover { background: var(--accent-hover); }
+  .calc-result { background: var(--accent-light); border-radius: 10px; padding: 18px 20px; text-align: center; font-size: 1.1rem; font-weight: 800; color: var(--navy-dark); display: none; }
+  .calc-result.visible { display: block; }
+  .calc-disclaimer { font-size: 0.78rem; color: var(--muted); text-align: center; margin: 16px 0 0; line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: white; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .faq-item summary { padding: 18px 22px; font-weight: 700; font-size: 0.98rem; color: var(--navy-dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 1.3rem; color: var(--accent); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { padding: 0 22px 20px; margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
 </style>
 </head>
 <body>
@@ -499,9 +521,10 @@
     <li><a href="funzionalita.html" class="nav-text-link">Funzionalità</a></li>
     <li><a href="pacchetti-servizi.html#pacchetti" class="nav-text-link">Pacchetti</a></li>
     <li><a href="pacchetti-servizi.html#servizi" class="nav-text-link">Servizi</a></li>
+    <li><a href="soluzioni.html" class="nav-text-link">Soluzioni</a></li>
     <li><a href="app-mobile.html" class="nav-text-link">App Mobile</a></li>
-    <li><a href="#storia" class="nav-text-link">Chi siamo</a></li>
-    <li><a href="#contatto" class="nav-cta open-modal" style="cursor:pointer;">Richiedi una demo</a></li>
+    <li><a href="chi-siamo.html" class="nav-text-link">Chi siamo</a></li>
+    <li><a href="demo.html" class="nav-cta">Richiedi una demo</a></li>
   </ul>
 </nav>
 
@@ -509,13 +532,13 @@
   <div>
     <span class="eyebrow">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      Sviluppato da un geometra, per tecnici del settore edile
+      Nato in cantiere, non in un ufficio marketing
     </span>
-    <h1>Il gestionale di cantiere nato dall'esperienza reale sul campo.</h1>
-    <p class="lead">CantierePro centralizza commesse, contabilità, documenti, personale, mezzi, sicurezza e avanzamento lavori in un'unica piattaforma modulare sviluppata per imprese e professionisti del settore edile.</p>
+    <h1>Il gestionale che chi vive il cantiere avrebbe voluto avere.</h1>
+    <p class="lead">CantierePro nasce dall'esperienza reale di un tecnico che ha vissuto il cantiere in ogni ruolo — progettista, direttore lavori, coordinatore sicurezza, direttore tecnico. Non è un software pensato a tavolino: è costruito per come si lavora davvero, dalla piccola impresa artigiana allo studio tecnico strutturato, fino alle aziende con più cantieri e più squadre in contemporanea.</p>
     <div class="cta-group">
       <button class="cta-primary open-modal">Richiedi una demo</button>
-      <a href="mailto:infocantierepro@gmail.com" class="cta-secondary">Contattami</a>
+      <a href="demo.html" class="cta-secondary">Componi la tua soluzione</a>
     </div>
   </div>
   <div class="mockup" role="img" aria-label="Interfaccia semplificata del gestionale CantierePro">
@@ -582,6 +605,38 @@
           <li><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12L9 16L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meno tempo a cercare informazioni, più tempo a gestire il lavoro</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COME E' FATTO -->
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Un sistema che si adatta a te</span>
+      <h2>Parti da quello che ti serve, cresci quando ne hai bisogno</h2>
+      <p class="section-intro">CantierePro non è un pacchetto rigido preconfezionato. È un nucleo operativo sempre incluso, a cui si aggiungono moduli indipendenti in base a come è organizzata la tua azienda — che tu sia un'impresa artigiana o una struttura con più cantieri e più uffici.</p>
+    </div>
+    <div class="package-grid">
+      <div class="package-card core">
+        <span class="package-badge">Sempre incluso</span>
+        <h3>Nucleo BASE</h3>
+        <p>Commessa, computo metrico, documenti di cantiere, personale, mezzi, sicurezza: tutto quello che serve per gestire un cantiere è già incluso dal primo giorno.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Attivabili singolarmente</span>
+        <h3>Pacchetti specialistici</h3>
+        <p>Contabilità lavori formale, misurazione su disegno CAD, sincronizzazione tra più postazioni: si aggiungono solo se e quando servono davvero.</p>
+      </div>
+      <div class="package-card">
+        <span class="package-badge">Funzioni trasversali</span>
+        <h3>Uffici aziendali</h3>
+        <p>Ufficio Tecnico, Ufficio Acquisti, Ufficio Contabile: collegano tutte le commesse dell'azienda, non solo il cantiere aperto in quel momento.</p>
+      </div>
+    </div>
+    <p class="flow-note" style="margin-top:24px; color:var(--muted); background:var(--bg-alt); border-color:var(--line);">Ogni modulo funziona da solo, ma è quando i pezzi lavorano insieme — computo, forniture, contabilità, uffici — che CantierePro dà il massimo: un'unica base dati, mai informazioni duplicate tra un modulo e l'altro.</p>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="demo.html" class="cta-primary" style="display:inline-block;">Componi la tua soluzione →</a>
     </div>
   </section>
 
@@ -683,16 +738,79 @@
   <section class="section">
     <div class="section-head">
       <span class="kicker">Per chi è pensato</span>
-      <h2>Uno strumento per chi vive il cantiere ogni giorno</h2>
+      <h2>Dalla piccola impresa artigiana alla struttura con più cantieri</h2>
+      <p class="section-intro">Non serve essere una grande azienda per lavorare in modo organizzato — e non serve rinunciare al controllo quando si cresce.</p>
     </div>
     <div class="audience-grid">
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 21V8l9-5 9 5v13" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Imprese edili</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8l7-5 7 5M5 21V8M19 21V8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Piccola impresa artigiana</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Direttori tecnici</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Studi tecnici</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7 12 2z" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>CSP / CSE</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><h4>Direzione lavori</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Progettisti</h4></div>
       <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="1" y="10" width="15" height="7" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M16 12h4l3 3v2h-7z" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Aziende con più cantieri</h4></div>
+      <div class="audience-card"><div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 9h18M9 4v16" stroke="currentColor" stroke-width="1.7"/></svg></div><h4>Aziende con più uffici e reparti</h4></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CALCOLATORE -->
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Quanto tempo stai perdendo?</span>
+      <h2>Una stima di quanto potresti recuperare</h2>
+      <p class="section-intro">Un'indicazione di massima, non una promessa: dipende da come lavori oggi e da quali moduli attivi.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-row">
+        <div class="calc-field">
+          <label for="calc-ore">Ore a settimana passate a rincorrere informazioni sparse (file, WhatsApp, telefonate)</label>
+          <input type="number" id="calc-ore" min="0" step="1" placeholder="Es. 8">
+        </div>
+      </div>
+      <div class="calc-row">
+        <button type="button" class="calc-button" id="calc-btn">Calcola la stima</button>
+      </div>
+      <div class="calc-result" id="calc-result"></div>
+      <p class="calc-disclaimer">Stima indicativa basata su un intervallo generico, non un dato misurato o garantito. Il risparmio reale dipende da come è organizzata la tua azienda oggi e da quali moduli decidi di attivare.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="kicker">Domande frequenti</span>
+      <h2>Le domande che ci fanno più spesso</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Devo attivare tutti i pacchetti per iniziare a usare CantierePro?</summary>
+        <p>No. Il nucleo BASE è completo e funzionante da solo dal primo giorno: computo metrico, diario, personale, mezzi, sicurezza. Contabilità, CAD, Sincronizzazione e gli Uffici Aziendali si aggiungono solo se e quando ti servono.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso importare o esportare dati da Excel o da altri programmi di computo?</summary>
+        <p>Sì, il Computo Metrico supporta import ed export da/verso Excel e verso il formato XPWE/PriMus, per lavorare insieme a chi usa altri strumenti.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Come funziona la sincronizzazione tra più postazioni?</summary>
+        <p>Il cantiere passa da "locale" a "in rete": ogni postazione (Titolare e satelliti) si sincronizza tramite un server dedicato alla tua azienda. I dati non vengono mai condivisi tra clienti diversi.</p>
+      </details>
+      <details class="faq-item">
+        <summary>L'app mobile sostituisce il gestionale desktop?</summary>
+        <p>No, lo affianca. L'app cattura i dati mentre sei sul campo (misure, presenze, diario, segnalazioni); l'organizzazione e l'assegnazione finale — ad esempio a una voce di computo — si fa in ufficio sul desktop.</p>
+      </details>
+      <details class="faq-item">
+        <summary>I dati della mia azienda sono al sicuro?</summary>
+        <p>Le password sono protette con Argon2id, i permessi di ogni utente sono verificati direttamente dal programma (non solo dall'interfaccia) e sono previsti backup e ripristino dei dati.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso vedere il software prima di decidere quali moduli attivare?</summary>
+        <p>Sì. Raccontaci come lavori oggi tramite il modulo "Componi la tua soluzione" e organizziamo una demo su misura, senza impegno.</p>
+      </details>
     </div>
   </section>
 
@@ -708,8 +826,9 @@
       <div class="story-avatar">CP</div>
       <div>
         <p>CantierePro nasce da anni di esperienza reale, vissuta come progettista, direttore lavori, coordinatore per la sicurezza, direttore tecnico e assistente di cantiere. Ogni funzione del software risponde a un problema affrontato davvero, sul campo, non immaginato a tavolino.</p>
-        <p>Non è un prodotto pensato per vendere una licenza. È lo strumento che avrei voluto avere durante ogni cantiere seguito: qualcosa che tenesse insieme computo, contabilità, documenti, personale e sicurezza senza dover rincorrere ogni informazione da fonti diverse.</p>
-        <p class="story-signature">Un geometra, per i tecnici del settore edile.<span>Fondatore di CantierePro</span></p>
+        <p>Non è un prodotto pensato per vendere una licenza. È lo strumento che il fondatore avrebbe voluto avere durante ogni cantiere seguito: qualcosa che tenesse insieme computo, contabilità, documenti, personale e sicurezza senza dover rincorrere ogni informazione da fonti diverse.</p>
+        <p class="story-signature">Un tecnico che ha vissuto il cantiere, per ogni impresa e ogni tecnico che lo vive ogni giorno.<span>Fondatore di CantierePro</span></p>
+        <p style="margin-top:20px;"><a href="chi-siamo.html" style="font-weight:700; text-decoration:none;">Leggi la storia completa →</a></p>
       </div>
     </div>
   </section>
@@ -737,8 +856,8 @@
           <input type="email" id="e-email" name="email" required>
         </div>
         <div class="form-group">
-          <label for="e-telefono">Telefono *</label>
-          <input type="tel" id="e-telefono" name="telefono" required>
+          <label for="e-telefono">Telefono <span aria-hidden="true">(facoltativo)</span></label>
+          <input type="tel" id="e-telefono" name="telefono" autocomplete="tel">
         </div>
         <div class="form-group">
           <label for="e-ruolo">Ruolo Professionale *</label>
@@ -758,7 +877,7 @@
         </div>
         <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
           <input type="checkbox" id="e-privacy" name="consenso_privacy" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0;">
-          <label for="e-privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Ho letto la <a href="privacy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
+          <label for="e-privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Dichiaro di aver letto la <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. *</label>
         </div>
         <button type="submit" class="form-submit">Richiedi la Demo</button>
       </form>
@@ -771,7 +890,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="logo">CantierePro</span>
-      <p>Gestionale modulare per il settore edile, sviluppato da un geometra a partire dall'esperienza reale di cantiere.</p>
+      <p>Gestionale modulare per il settore edile, sviluppato da un tecnico a partire dall'esperienza reale di cantiere.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
@@ -779,8 +898,9 @@
         <a href="index.html">Home</a>
         <a href="funzionalita.html">Funzionalità</a>
         <a href="pacchetti-servizi.html">Pacchetti e Servizi</a>
+        <a href="soluzioni.html">Soluzioni</a>
         <a href="app-mobile.html">App Mobile</a>
-        <a href="#storia">Chi siamo</a>
+        <a href="chi-siamo.html">Chi siamo</a>
       </div>
       <div class="footer-col">
         <h5>Legale</h5>
@@ -799,10 +919,10 @@
 </footer>
 
 <!-- Modal Form -->
-<div id="contactModal" class="modal">
+<div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-hidden="true" tabindex="-1">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">&times;</button>
-    <h3>Richiedi una demo</h3>
+    <button class="modal-close" type="button" aria-label="Chiudi">&times;</button>
+    <h3 id="contactModalTitle">Richiedi una demo</h3>
     <p class="modal-intro">Raccontami come lavori oggi e ti mostrerò come CantierePro può adattarsi alla tua organizzazione.</p>
     <form action="https://formspree.io/f/xpqvadze" method="POST">
       <div class="form-group">
@@ -814,8 +934,8 @@
         <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="telefono">Telefono *</label>
-        <input type="tel" id="telefono" name="telefono" required>
+        <label for="telefono">Telefono <span aria-hidden="true">(facoltativo)</span></label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel">
       </div>
       <div class="form-group">
         <label for="ruolo">Ruolo Professionale *</label>
@@ -835,7 +955,7 @@
       </div>
       <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
         <input type="checkbox" id="privacy" name="consenso_privacy" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0;">
-        <label for="privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Ho letto la <a href="privacy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
+        <label for="privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Dichiaro di aver letto la <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. *</label>
       </div>
       <button type="submit" class="form-submit">Richiedi la Demo</button>
     </form>
@@ -844,13 +964,21 @@
 
 <script>
   const modal = document.getElementById('contactModal');
+  let lastFocusedElement;
+
+  function openModal() {
+    lastFocusedElement = document.activeElement;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.querySelector('.modal-close').focus();
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (link.classList.contains('open-modal')) {
         e.preventDefault();
-        modal.classList.add('active');
+        openModal();
       } else if (href.length > 1) {
         e.preventDefault();
         const target = document.querySelector(href);
@@ -862,16 +990,38 @@
   document.querySelectorAll('.open-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      modal.classList.add('active');
+      openModal();
     });
   });
 
-  function closeModal() { modal.classList.remove('active'); }
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
 
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
+
+  const calcBtn = document.getElementById('calc-btn');
+  const calcResult = document.getElementById('calc-result');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      const ore = parseFloat(document.getElementById('calc-ore').value);
+      if (!ore || ore <= 0) {
+        calcResult.textContent = 'Inserisci quante ore a settimana dedichi oggi a rincorrere le informazioni.';
+        calcResult.classList.add('visible');
+        return;
+      }
+      const min = Math.round(ore * 0.25);
+      const max = Math.round(ore * 0.45);
+      calcResult.textContent = `Fino a ${min}–${max} ore a settimana potenzialmente recuperabili`;
+      calcResult.classList.add('visible');
+    });
+  }
 </script>
 
 </body>

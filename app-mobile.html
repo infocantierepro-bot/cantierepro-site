@@ -63,6 +63,19 @@
   .feature-card h3 { font-size: 1.02rem; color: var(--navy-dark); margin: 0 0 8px; font-weight: 700; }
   .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0; }
 
+  /* Flusso desktop-mobile */
+  .flow-box { background: var(--navy-dark); border-radius: 16px; padding: 44px; color: white; }
+  @media (max-width: 800px) { .flow-box { padding: 30px 22px; } }
+  .flow-box h2 { color: white; font-size: 1.5rem; font-weight: 800; margin: 0 0 12px; }
+  .flow-box .flow-intro { color: #c5d2f5; font-size: 0.98rem; line-height: 1.7; margin: 0 0 8px; max-width: 640px; }
+  .flow-steps { display: flex; align-items: stretch; gap: 8px; margin: 36px 0 28px; flex-wrap: wrap; justify-content: center; }
+  .flow-step { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 18px 20px; text-align: center; min-width: 150px; flex: 1; }
+  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #93a4d1; margin-bottom: 8px; }
+  .flow-step .flow-value { font-weight: 800; font-size: 1rem; line-height: 1.4; }
+  .flow-arrow { color: #5a6a99; font-size: 1.3rem; flex-shrink: 0; display: flex; align-items: center; }
+  @media (max-width: 700px) { .flow-steps { flex-direction: column; } .flow-arrow { transform: rotate(90deg); align-self: center; } }
+  .flow-note { background: rgba(0,150,255,0.12); border: 1px solid rgba(0,150,255,0.3); border-radius: 10px; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; color: #dce8ff; }
+
   .cta-section { text-align: center; padding: 56px 40px; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-radius: 16px; color: white; }
   @media (max-width: 700px) { .cta-section { padding: 40px 24px; } }
   .cta-section h2 { color: white; margin: 0 0 12px; font-size: 1.6rem; font-weight: 800; }
@@ -107,9 +120,10 @@
     <li><a href="funzionalita.html" class="nav-text-link">Funzionalità</a></li>
     <li><a href="pacchetti-servizi.html#pacchetti" class="nav-text-link">Pacchetti</a></li>
     <li><a href="pacchetti-servizi.html#servizi" class="nav-text-link">Servizi</a></li>
+    <li><a href="soluzioni.html" class="nav-text-link">Soluzioni</a></li>
     <li><a href="app-mobile.html" class="nav-text-link">App Mobile</a></li>
-    <li><a href="index.html#storia" class="nav-text-link">Chi siamo</a></li>
-    <li><a href="#" class="nav-cta open-modal" style="cursor:pointer;">Richiedi una demo</a></li>
+    <li><a href="chi-siamo.html" class="nav-text-link">Chi siamo</a></li>
+    <li><a href="demo.html" class="nav-cta">Richiedi una demo</a></li>
   </ul>
 </nav>
 
@@ -159,10 +173,31 @@
 
   <div class="divider"></div>
 
+  <!-- FLUSSO DESKTOP <-> MOBILE -->
+  <section class="section">
+    <div class="flow-box">
+      <span class="kicker" style="color:#7fc4ff;">Come lavora insieme al desktop</span>
+      <h2>Il telefono raccoglie, il desktop organizza</h2>
+      <p class="flow-intro">L'app non sostituisce il desktop: cattura i dati mentre sei sul campo, dove il gestionale completo non serve. Il resto del lavoro — assegnare, validare, elaborare — resta al gestionale in ufficio.</p>
+
+      <div class="flow-steps">
+        <div class="flow-step"><div class="flow-label">Sul campo</div><div class="flow-value">Misure, presenze, diario, segnalazioni</div></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><div class="flow-label">Sincronizzazione</div><div class="flow-value">L'app invia i dati al gestionale</div></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step"><div class="flow-label">In ufficio</div><div class="flow-value">Si assegna, valida e organizza tutto sul desktop</div></div>
+      </div>
+
+      <div class="flow-note">Il telefono è l'unica fonte per i dati raccolti in campo: nessun rischio di sovrascritture o conflitti tra postazioni diverse. È il desktop, in ufficio, a fare la sintesi finale — ad esempio assegnando una misurazione libera alla voce di computo corretta.</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section class="section">
     <div class="cta-section">
       <h2>Vuoi provare l'app sul tuo prossimo cantiere?</h2>
-      <p>Ti mostro come desktop e mobile lavorano insieme, in tempo reale.</p>
+      <p>Ti mostro come desktop e mobile lavorano insieme, restando sempre allineati.</p>
       <button class="cta-primary open-modal">Richiedi una demo</button>
     </div>
   </section>
@@ -172,7 +207,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="logo">CantierePro</span>
-      <p>Gestionale modulare per il settore edile, sviluppato da un geometra a partire dall'esperienza reale di cantiere.</p>
+      <p>Gestionale modulare per il settore edile, sviluppato da un tecnico a partire dall'esperienza reale di cantiere.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
@@ -180,8 +215,9 @@
         <a href="index.html">Home</a>
         <a href="funzionalita.html">Funzionalità</a>
         <a href="pacchetti-servizi.html">Pacchetti e Servizi</a>
+        <a href="soluzioni.html">Soluzioni</a>
         <a href="app-mobile.html">App Mobile</a>
-        <a href="index.html#storia">Chi siamo</a>
+        <a href="chi-siamo.html">Chi siamo</a>
       </div>
       <div class="footer-col">
         <h5>Legale</h5>
@@ -199,10 +235,10 @@
   </div>
 </footer>
 
-<div id="contactModal" class="modal">
+<div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-hidden="true" tabindex="-1">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()" aria-label="Chiudi">&times;</button>
-    <h3>Richiedi una demo</h3>
+    <button class="modal-close" type="button" aria-label="Chiudi">&times;</button>
+    <h3 id="contactModalTitle">Richiedi una demo</h3>
     <p class="modal-intro">Raccontami come lavori oggi e ti mostrerò come CantierePro può adattarsi alla tua organizzazione.</p>
     <form action="https://formspree.io/f/xpqvadze" method="POST">
       <div class="form-group">
@@ -214,8 +250,8 @@
         <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="telefono">Telefono *</label>
-        <input type="tel" id="telefono" name="telefono" required>
+        <label for="telefono">Telefono <span aria-hidden="true">(facoltativo)</span></label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel">
       </div>
       <div class="form-group">
         <label for="ruolo">Ruolo Professionale *</label>
@@ -235,7 +271,7 @@
       </div>
       <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
         <input type="checkbox" id="privacy" name="consenso_privacy" required style="width:18px; height:18px; margin-top:2px; flex-shrink:0;">
-        <label for="privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Ho letto la <a href="privacy.html" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
+        <label for="privacy" style="font-weight:400; font-size:0.85rem; color:var(--muted); margin:0;">Dichiaro di aver letto la <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. *</label>
       </div>
       <button type="submit" class="form-submit">Richiedi la Demo</button>
     </form>
@@ -244,10 +280,22 @@
 
 <script>
   const modal = document.getElementById('contactModal');
+  let lastFocusedElement;
+  function openModal() {
+    lastFocusedElement = document.activeElement;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.querySelector('.modal-close').focus();
+  }
   document.querySelectorAll('.open-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); });
+    btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
   });
-  function closeModal() { modal.classList.remove('active'); }
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 </script>
