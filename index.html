@@ -1201,7 +1201,13 @@
     }, { threshold: 0.4 });
     flowObserver.observe(flowSteps);
   }
+</script>
 
+<button class="back-to-top" id="backToTop" aria-label="Torna su" title="Torna su">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     window.addEventListener('scroll', () => {
@@ -1213,10 +1219,6 @@
     });
   }
 </script>
-
-<button class="back-to-top" id="backToTop" aria-label="Torna su" title="Torna su">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
 
 </body>
 </html>
