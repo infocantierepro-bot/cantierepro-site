@@ -103,22 +103,33 @@
   .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin: 0; }
 
   /* Flusso desktop-mobile */
-  .flow-box { background: var(--navy-dark); border-radius: 16px; padding: 44px; color: white; }
+  .flow-box { background: white; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(13,27,62,0.05); border-radius: 16px; padding: 44px; }
   @media (max-width: 800px) { .flow-box { padding: 30px 22px; } }
-  .flow-box h2 { color: white; font-size: 1.5rem; font-weight: 800; margin: 0 0 12px; }
-  .flow-box .flow-intro { color: #c5d2f5; font-size: 0.98rem; line-height: 1.7; margin: 0 0 8px; max-width: 640px; }
-  .flow-steps { display: flex; align-items: stretch; gap: 8px; margin: 36px 0 28px; flex-wrap: wrap; justify-content: center; }
-  .flow-step { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 18px 20px; text-align: center; min-width: 150px; flex: 1; }
-  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #93a4d1; margin-bottom: 8px; }
-  .flow-step .flow-value { font-weight: 800; font-size: 1rem; line-height: 1.4; }
-  .flow-arrow { color: #5a6a99; font-size: 1.3rem; flex-shrink: 0; display: flex; align-items: center; }
-  @media (max-width: 700px) { .flow-steps { flex-direction: column; } .flow-arrow { transform: rotate(90deg); align-self: center; } }
-  .flow-note { background: rgba(0,150,255,0.12); border: 1px solid rgba(0,150,255,0.3); border-radius: 10px; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; color: #dce8ff; }
+  .flow-box h2 { color: var(--navy-dark); font-size: 1.5rem; font-weight: 800; margin: 0 0 12px; }
+  .flow-box .flow-intro { color: var(--muted); font-size: 0.98rem; line-height: 1.7; margin: 0 0 8px; max-width: 640px; }
+  .flow-steps { display: flex; align-items: stretch; gap: 10px; margin: 36px 0 28px; flex-wrap: wrap; justify-content: center; }
+  .flow-step { background: var(--bg-alt); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; text-align: center; min-width: 150px; flex: 1; }
+  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 8px; }
+  .flow-step .flow-value { font-weight: 700; font-size: 1rem; line-height: 1.4; color: var(--navy-dark); }
+  .flow-connector { position: relative; width: 46px; height: 3px; background: var(--line); border-radius: 2px; align-self: center; flex-shrink: 0; }
+  .flow-beam {
+    position: absolute; top: 50%; left: 0; width: 8px; height: 8px; margin-top: -4px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px 2px rgba(0,150,255,0.55);
+    animation: beam-move-x 2.6s linear infinite;
+  }
+  @keyframes beam-move-x { 0% { left: -4px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+  @media (max-width: 700px) {
+    .flow-steps { flex-direction: column; }
+    .flow-connector { width: 3px; height: 34px; }
+    .flow-beam { animation: beam-move-y 2.6s linear infinite; top: 0; left: 50%; margin-left: -4px; margin-top: 0; }
+    @keyframes beam-move-y { 0% { top: -4px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+  }
+  .flow-note { background: var(--accent-light); border: 1px solid rgba(0,150,255,0.25); border-radius: 10px; padding: 16px 20px; font-size: 0.9rem; line-height: 1.6; color: var(--navy); }
 
-  .cta-section { text-align: center; padding: 56px 40px; background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-radius: 16px; color: white; }
+  .cta-section { text-align: center; padding: 56px 40px; background: white; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(13,27,62,0.05); border-radius: 16px; }
   @media (max-width: 700px) { .cta-section { padding: 40px 24px; } }
-  .cta-section h2 { color: white; margin: 0 0 12px; font-size: 1.6rem; font-weight: 800; }
-  .cta-section p { color: #c5d2f5; font-size: 1rem; margin: 0 0 28px; }
+  .cta-section h2 { color: var(--navy-dark); margin: 0 0 12px; font-size: 1.6rem; font-weight: 800; }
+  .cta-section p { color: var(--muted); font-size: 1rem; margin: 0 0 28px; }
   .cta-primary { border: none; padding: 14px 30px; font-size: 0.95rem; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.2s; display: inline-block; background: var(--accent); color: white; box-shadow: 0 4px 14px rgba(0, 150, 255, 0.25); }
   .cta-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
@@ -231,15 +242,15 @@
   <!-- FLUSSO DESKTOP <-> MOBILE -->
   <section class="section">
     <div class="flow-box">
-      <span class="kicker" style="color:#7fc4ff;">Come lavora insieme al desktop</span>
+      <span class="kicker">Come lavora insieme al desktop</span>
       <h2>Il telefono raccoglie, il desktop organizza</h2>
       <p class="flow-intro">L'app non sostituisce il desktop: cattura i dati mentre sei sul campo, dove il gestionale completo non serve. Il resto del lavoro — assegnare, validare, elaborare — resta al gestionale in ufficio.</p>
 
       <div class="flow-steps">
         <div class="flow-step"><div class="flow-label">Sul campo</div><div class="flow-value">Misure, presenze, diario, segnalazioni</div></div>
-        <span class="flow-arrow">→</span>
+        <div class="flow-connector"><span class="flow-beam" style="animation-delay:0s"></span></div>
         <div class="flow-step"><div class="flow-label">Sincronizzazione</div><div class="flow-value">L'app invia i dati al gestionale</div></div>
-        <span class="flow-arrow">→</span>
+        <div class="flow-connector"><span class="flow-beam" style="animation-delay:1.3s"></span></div>
         <div class="flow-step"><div class="flow-label">In ufficio</div><div class="flow-value">Si assegna, valida e organizza tutto sul desktop</div></div>
       </div>
 

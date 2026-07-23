@@ -232,30 +232,35 @@
   }
   .cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Hero mockup */
-  .mockup {
+  /* Hero laptop mockup */
+  .laptop-mockup { max-width: 100%; }
+  .laptop-screen-wrap {
+    position: relative;
     background: var(--navy-dark);
-    border-radius: 14px;
-    padding: 16px;
+    border-radius: 14px 14px 3px 3px;
+    padding: 16px 16px 10px;
     box-shadow: 0 30px 60px rgba(5, 17, 29, 0.35);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
   }
-  .mockup-topbar { display: flex; gap: 6px; margin-bottom: 14px; padding: 0 4px; }
-  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
-  .mockup-body { background: white; border-radius: 10px; padding: 20px; }
-  .mockup-row { display: flex; gap: 12px; margin-bottom: 12px; }
-  .mockup-sidebar { width: 30%; display: flex; flex-direction: column; gap: 8px; }
-  .mockup-sidebar div { height: 12px; border-radius: 4px; background: var(--bg-alt); }
-  .mockup-sidebar div:first-child { background: var(--accent-light); width: 90%; }
-  .mockup-main { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-  .mockup-card { background: var(--bg-alt); border-radius: 8px; padding: 12px; }
-  .mockup-bar { height: 8px; border-radius: 4px; background: var(--line); margin-bottom: 6px; }
-  .mockup-bar.short { width: 55%; }
-  .mockup-bar.accent { background: var(--accent); width: 70%; }
-  .mockup-stats { display: flex; gap: 10px; }
-  .mockup-stat { flex: 1; background: var(--bg-alt); border-radius: 8px; padding: 10px; text-align: center; }
-  .mockup-stat .num { font-weight: 800; color: var(--navy-dark); font-size: 1.1rem; }
-  .mockup-stat .lbl { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-  .mockup-caption { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
+  .laptop-camera { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.18); }
+  .laptop-screen-wrap img { width: 100%; display: block; border-radius: 5px; }
+  .laptop-mockup:hover .laptop-screen-wrap {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 80px rgba(5, 17, 29, 0.45), 0 0 0 1px rgba(0,150,255,0.35), 0 0 46px rgba(0,150,255,0.22);
+  }
+  .laptop-base {
+    height: 14px;
+    margin: 0 -14px;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+    border-radius: 0 0 8px 8px;
+    position: relative;
+  }
+  .laptop-base::after {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 14%; height: 5px; background: rgba(0,0,0,0.25); border-radius: 0 0 5px 5px;
+  }
+  .laptop-stand { height: 7px; margin: 0 54px; background: linear-gradient(180deg, var(--navy) 0%, transparent 100%); border-radius: 0 0 50px 50px; opacity: 0.7; }
+  .mockup-caption { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 14px; }
 
   .marquee-wrap {
     overflow: hidden; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
@@ -387,49 +392,60 @@
 
   /* Vantaggio competitivo - flow */
   .flow-box {
-    background: var(--navy-dark);
+    background: white;
+    border: 1px solid var(--line);
     border-radius: 16px;
     padding: 48px;
-    color: white;
+    box-shadow: 0 10px 30px rgba(13, 27, 62, 0.05);
   }
   @media (max-width: 800px) { .flow-box { padding: 32px 24px; } }
-  .flow-box h2 { color: white; }
-  .flow-box .section-intro { color: #c5d2f5; }
+  .flow-box h2 { color: var(--navy-dark); }
+  .flow-box .section-intro { color: var(--muted); }
   .flow-steps {
-    display: flex; align-items: center; gap: 8px; margin: 40px 0 32px;
+    display: flex; align-items: center; gap: 10px; margin: 40px 0 32px;
     flex-wrap: wrap; justify-content: center;
   }
   .flow-step {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
     border-radius: 10px;
     padding: 16px 20px;
     text-align: center;
     min-width: 130px;
     flex: 1;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #93a4d1; margin-bottom: 6px; }
-  .flow-step .flow-value { font-weight: 800; font-size: 1.3rem; }
-  .flow-step.residuo { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.35); }
-  .flow-step.residuo .flow-value { color: #fca5a5; }
-  .flow-arrow { color: #5a6a99; font-size: 1.3rem; flex-shrink: 0; }
+  .flow-step .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 6px; }
+  .flow-step .flow-value { font-weight: 700; font-size: 1.3rem; color: var(--navy-dark); }
+  .flow-step.residuo { background: rgba(239,68,68,0.07); border-color: rgba(239,68,68,0.25); }
+  .flow-step.residuo .flow-value { color: var(--danger); }
+  .flow-step.lit { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+  .flow-connector { position: relative; width: 46px; height: 3px; background: var(--line); border-radius: 2px; align-self: center; flex-shrink: 0; }
+  .flow-beam {
+    position: absolute; top: 50%; left: 0; width: 8px; height: 8px; margin-top: -4px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px 2px rgba(0,150,255,0.55);
+    animation: beam-move-x 2.6s linear infinite;
+  }
+  @keyframes beam-move-x { 0% { left: -4px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
   @media (max-width: 700px) {
     .flow-steps { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); }
+    .flow-connector { width: 3px; height: 34px; }
+    .flow-beam { animation: beam-move-y 2.6s linear infinite; top: 0; left: 50%; margin-left: -4px; margin-top: 0; }
+    @keyframes beam-move-y { 0% { top: -4px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
   }
   .launch-note-dark {
     display: inline-block; margin-top: 18px; padding: 10px 20px;
-    background: rgba(0,150,255,0.12); border: 1px solid rgba(0,150,255,0.3);
-    border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #dce8ff;
+    background: var(--accent-light); border: 1px solid rgba(0,150,255,0.25);
+    border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--accent-hover);
   }
   .flow-note {
-    background: rgba(0,150,255,0.12);
-    border: 1px solid rgba(0,150,255,0.3);
+    background: var(--accent-light);
+    border: 1px solid rgba(0,150,255,0.25);
     border-radius: 10px;
     padding: 18px 22px;
     font-size: 0.92rem;
     line-height: 1.6;
-    color: #dce8ff;
+    color: var(--navy);
   }
 
   /* Sicurezza */
@@ -467,7 +483,9 @@
   .story-avatar {
     width: 88px; height: 88px; border-radius: 50%; background: var(--navy-dark);
     display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.6rem;
-    flex-shrink: 0; margin: 0 auto;
+    flex-shrink: 0; margin: 0 auto; padding: 16px;
+  }
+  .story-avatar img { width: 100%; height: 100%; object-fit: contain; }
   }
   .story-box p { font-size: 1.02rem; line-height: 1.75; color: var(--text); margin: 0 0 12px; }
   .story-box p:last-child { margin-bottom: 0; }
@@ -478,13 +496,14 @@
   .cta-section {
     text-align: center;
     padding: 64px 40px;
-    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    background: white;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(13, 27, 62, 0.05);
     border-radius: 16px;
-    color: white;
   }
   @media (max-width: 700px) { .cta-section { padding: 48px 24px; } }
-  .cta-section h2 { color: white; margin-bottom: 12px; }
-  .cta-section p { color: #c5d2f5; font-size: 1.05rem; margin: 0 0 32px; }
+  .cta-section h2 { color: var(--navy-dark); margin-bottom: 12px; }
+  .cta-section p { color: var(--muted); font-size: 1.05rem; margin: 0 0 32px; }
 
   footer {
     border-top: 1px solid var(--line);
@@ -626,33 +645,14 @@
       <a href="demo.html" class="cta-secondary">Componi la tua soluzione</a>
     </div>
   </div>
-  <div class="mockup" role="img" aria-label="Interfaccia semplificata del gestionale CantierePro">
-    <div class="mockup-topbar">
-      <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+  <div class="laptop-mockup">
+    <div class="laptop-screen-wrap">
+      <div class="laptop-camera"></div>
+      <img src="screenshot-app.png" alt="Interfaccia del gestionale CantierePro">
     </div>
-    <div class="mockup-body">
-      <div class="mockup-row">
-        <div class="mockup-sidebar">
-          <div style="height:16px;"></div><div></div><div></div><div></div><div></div>
-        </div>
-        <div class="mockup-main">
-          <div class="mockup-stats">
-            <div class="mockup-stat"><div class="num">128</div><div class="lbl">Voci Computo</div></div>
-            <div class="mockup-stat"><div class="num">SAL 4</div><div class="lbl">Avanzamento</div></div>
-            <div class="mockup-stat"><div class="num">92%</div><div class="lbl">Completato</div></div>
-          </div>
-          <div class="mockup-card">
-            <div class="mockup-bar accent"></div>
-            <div class="mockup-bar short"></div>
-          </div>
-          <div class="mockup-card">
-            <div class="mockup-bar" style="width:80%"></div>
-            <div class="mockup-bar short"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="mockup-caption">Anteprima semplificata dell'interfaccia — dashboard commessa</p>
+    <div class="laptop-base"></div>
+    <div class="laptop-stand"></div>
+    <p class="mockup-caption">Anteprima dell'interfaccia — schermata di accesso</p>
   </div>
 </div>
 
@@ -768,18 +768,18 @@
   <!-- VANTAGGIO COMPETITIVO -->
   <section class="section">
     <div class="flow-box">
-      <span class="kicker" style="color:#7fc4ff;">Il vantaggio CantierePro</span>
+      <span class="kicker">Il vantaggio CantierePro</span>
       <h2>Computo metrico e forniture, finalmente collegati</h2>
       <p class="section-intro">Nella maggior parte dei gestionali, computo e approvvigionamenti vivono separati. In CantierePro sono la stessa cosa vista da due angolazioni.</p>
 
-      <div class="flow-steps">
-        <div class="flow-step"><div class="flow-label">Previsto</div><div class="flow-value">100%</div></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><div class="flow-label">Ordinato</div><div class="flow-value">85%</div></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step"><div class="flow-label">Consegnato</div><div class="flow-value">70%</div></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step residuo"><div class="flow-label">Residuo</div><div class="flow-value">30%</div></div>
+      <div class="flow-steps" id="flowSteps">
+        <div class="flow-step"><div class="flow-label">Previsto</div><div class="flow-value" data-count="100">0%</div></div>
+        <div class="flow-connector"><span class="flow-beam" style="animation-delay:0s"></span></div>
+        <div class="flow-step"><div class="flow-label">Ordinato</div><div class="flow-value" data-count="85">0%</div></div>
+        <div class="flow-connector"><span class="flow-beam" style="animation-delay:0.85s"></span></div>
+        <div class="flow-step"><div class="flow-label">Consegnato</div><div class="flow-value" data-count="70">0%</div></div>
+        <div class="flow-connector"><span class="flow-beam" style="animation-delay:1.7s"></span></div>
+        <div class="flow-step residuo"><div class="flow-label">Residuo</div><div class="flow-value" data-count="30">0%</div></div>
       </div>
 
       <div class="flow-note">Il sistema evidenzia automaticamente le carenze di approvvigionamento direttamente sulle voci di computo, offrendo un controllo raro nei gestionali tradizionali: sai sempre cosa manca, prima che diventi un problema di cantiere.</div>
@@ -915,7 +915,7 @@
       <h2>Nato in cantiere, non in un ufficio marketing</h2>
     </div>
     <div class="story-box">
-      <div class="story-avatar">CP</div>
+      <div class="story-avatar"><img src="logo-icon.png" alt="Logo CantierePro"></div>
       <div>
         <p>CantierePro nasce da anni di esperienza reale, vissuta come progettista, direttore lavori, coordinatore per la sicurezza, direttore tecnico e assistente di cantiere. Ogni funzione del software risponde a un problema affrontato davvero, sul campo, non immaginato a tavolino.</p>
         <p>Non è un prodotto pensato per vendere una licenza. È lo strumento che il fondatore avrebbe voluto avere durante ogni cantiere seguito: qualcosa che tenesse insieme computo, contabilità, documenti, personale e sicurezza senza dover rincorrere ogni informazione da fonti diverse.</p>
@@ -1162,6 +1162,30 @@
         morphEl.classList.remove('morphing');
       }, 400);
     }, 2800);
+  }
+
+  const flowSteps = document.getElementById('flowSteps');
+  if (flowSteps) {
+    let flowAnimated = false;
+    const animateCounters = () => {
+      if (flowAnimated) return;
+      flowAnimated = true;
+      flowSteps.querySelectorAll('.flow-value[data-count]').forEach((el) => {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const duration = 1200;
+        const start = performance.now();
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          el.textContent = Math.round(target * progress) + '%';
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    };
+    const flowObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) animateCounters(); });
+    }, { threshold: 0.4 });
+    flowObserver.observe(flowSteps);
   }
 </script>
 
