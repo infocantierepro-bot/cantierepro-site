@@ -12,10 +12,22 @@
     --text: #1a1a2e; --muted: #5a5f73; --line: #dde1eb; --bg: #f9fafb;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: -apple-system, "Segoe UI", Inter, Roboto, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+  html { max-width: 100%; overflow-x: hidden; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Inter, Roboto, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; max-width: 100%; overflow-x: hidden; }
   nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: rgba(249,250,251,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .logo { font-weight: 800; font-size: 1rem; color: var(--navy-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
   .logo img { height: 26px; width: auto; display: block; }
+  .brand-group { display: flex; align-items: center; gap: 6px; }
+  .home-icon-btn { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; color: var(--muted); transition: all 0.2s; flex-shrink: 0; }
+  .home-icon-btn:hover { color: var(--accent); background: var(--accent-light); }
+  @media (max-width: 400px) {
+    nav { padding: 12px 16px; }
+    .brand-group { gap: 3px; }
+    .logo { font-size: 0.85rem; }
+    .home-icon-btn { width: 22px; height: 22px; }
+    .home-icon-btn svg { width: 14px; height: 14px; }
+    nav a.back { font-size: 0.8rem; }
+  }
   nav a.back { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
   nav a.back:hover { color: var(--accent); }
   main { max-width: 760px; margin: 0 auto; padding: 60px 40px 100px; }
@@ -32,7 +44,12 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="logo-icon.png" alt="" width="26" height="26">CantierePro</a>
+  <div class="brand-group">
+    <a href="index.html" class="logo"><img src="logo-icon.png" alt="" width="26" height="26">CantierePro</a>
+    <a href="index.html" class="home-icon-btn" aria-label="Home" title="Torna alla Home">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
   <a href="index.html" class="back">← Torna al sito</a>
 </nav>
 
